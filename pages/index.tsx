@@ -1,8 +1,6 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
+import Homie from '../components/Homie'
 
-const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
@@ -14,7 +12,7 @@ export default function Home() {
         <link rel="icon" href="/live.png" />
       </Head>
       <main>
-          <h1>Hello Streamer</h1>
+          <Homie/>
       </main>
     </>
   )
