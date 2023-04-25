@@ -1,40 +1,36 @@
 import { useEffect } from "react";
 import h from "../styles/Homie.module.css";
+import { useState } from "react";
 
 const Homie = () => {
-    
-    const handle_stream = () => {
-        console.log("clicked");
-        
+    const [videoData, setVideoData] = useState<Blob>();
+    const [videoUrl, setvideoUrl] = useState<string>();
+    const handle_stream = () => {        
         fetch("http://localhost:3000/api/streamer", {
             method:"POST",
             body:"Testing",
-            headers: { Range: 'bytes=0-100' }
+            headers: { Range: 'bytes=0-9000000' }
         })
-        .then(
-            (response) => {
-                console.log(response.body);
-                const reader = response.body?.getReader();
-
-                const chunks:any = [];
-
-                function pump() {
-                  reader!.read().then(({ value, done }) => {
+        .then((response) => {
+            const reader = response.body?.getReader();
+            let videoData:any = [];
+            const read = () => {
+                reader?.read().then(({ done, value }) => {
                     if (done) {
-                      // video chunk is complete
-                      const videoChunk = new Uint8Array(chunks);
-                      console.log(videoChunk);
-                      return;
+                        // all data has been read
+                        const videoBlob = new Blob(videoData, { type: 'video/mp4' });
+                        const videoUrl = URL.createObjectURL(videoBlob);
+                        console.log(videoUrl);
+                        setvideoUrl(videoUrl);
+                        return;
                     }
-                    
-                    chunks.push(value);
-                    pump(); // read next chunk
-                  });
-                }
-                pump(); // start reading the stream
-                console.log(chunks)
-            }
-        )
+                    videoData.push(value);
+                    console.log(value)
+                    read();
+                });
+            };
+            read();
+        })
         .catch((error) => {
             console.error(error);
         });
@@ -45,7 +41,13 @@ const Homie = () => {
             <div className={h.homie}>
                 <div>
                     <button onClick={handle_stream}>TEST STREAM</button>
-                    <h1>Hello</h1>
+                    <h1>{videoUrl}</h1>
+                    {
+                        videoUrl &&
+                        <video controls>
+                            <source src={videoUrl} type="video/mp4" />
+                        </video>
+                    }
                 </div>
             </div>
             
