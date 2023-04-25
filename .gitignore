@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 
+/excluded
+
 # testing
 /coverage
 
