@@ -4,12 +4,15 @@ import fs from 'fs';
 import { createReadStream } from 'fs';
 import path from 'path';
 
+const test = [];
 
-export default function handler(
+
+export  default function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const videoPath = path.join(process.cwd(), 'excluded', 'tiger.mp4');
+  console.log(req.headers.file)
+  const videoPath = path.join(process.cwd(), 'excluded', `${req.headers.file}`);
   const file_details = fs.statSync(videoPath);
   const fileSize = file_details.size;
   const byte_range = req.headers.range;
@@ -21,8 +24,8 @@ export default function handler(
 
     const start = parseInt(slice[0], 10);
     const end = slice[1] ? parseInt(slice[1], 10) : fileSize - 1;
-    const chunksize = end - start + 1;
-    const file = createReadStream(videoPath, { start, end });
+    const chunksize = end - start;
+    const file = createReadStream(videoPath, ({ start, end }));
     const head = {
       'Content-Range': `bytes ${start}-${end}/${fileSize}`,
       'Accept-Ranges': 'bytes',
@@ -33,6 +36,11 @@ export default function handler(
     file.pipe(res);
   }
   else{
-    res.status(200).json({ message: 'no range found' })
+    const head = {
+        'Content-Length': fileSize,
+        'Content-Type': 'video/mp4',
+    };
+    res.writeHead(200, head);
+    fs.createReadStream(videoPath).pipe(res);
   }
 }
