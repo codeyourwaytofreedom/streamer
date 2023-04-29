@@ -1,6 +1,7 @@
 import { use, useEffect, useRef } from "react";
 import h from "../styles/Homie.module.css";
 import { useState } from "react";
+import { clear } from "console";
 
 
 
@@ -12,7 +13,7 @@ const Homie = () => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const chunker_button = useRef<HTMLButtonElement>(null);
     const [cTime, setCurrentTime] = useState(0);
-
+    const chunk_size = 1000000;
     
     useEffect(()=> {
       console.log("initial")
@@ -46,7 +47,7 @@ const Homie = () => {
         }
       };
       fetchData();
-      setRange({start:b_range.end, end:b_range.end+200000});
+      setRange({start:b_range.end, end:b_range.end+chunk_size});
     },[]);
     
     const [last, setLast] = useState(0);
@@ -55,21 +56,30 @@ const Homie = () => {
       if(videoRef.current){
         
         if(cTime-videoRef.current.currentTime === 0){
-          console.log("this is the spot I am looking for");
+          //console.log("this is the spot I am looking for");
           videoRef.current.currentTime = last;
-          console.log(last)
+          //console.log(last)
         }
         else{
-          console.log("good technique...aha");
+          //console.log("good technique...aha");
           //console.log(cTime);
           setLast(cTime)
         }
       }
     },[cTime])
 
+/*     useEffect(() => {
+      const intervalId = setInterval(() => {
+        chunker_button.current?.click();
+        console.log("Interval working")
+      }, 10000);
+      return () => clearInterval(intervalId);
+    }, []); */
+
+
     const add = () => {
-      console.log("last displayed after add click",last);
-      setRange({start:b_range.end, end:b_range.end+200000});
+      //console.log("last displayed after add click",last);
+      setRange({start:b_range.end, end:b_range.end+chunk_size});
         const fetchData = async () => {
             try {
               const response = await fetch(
@@ -109,10 +119,9 @@ const Homie = () => {
             <div className={h.homie}>
                 <div>
                     <button onClick={add} ref={chunker_button}>PART ONE</button>
-                    <button onClick={()=> videoRef.current!.currentTime = 8} >MOVE TO SECOND X</button>
-                    <h1>Chunks : {chunks.length}</h1>
+                    {/* <h1>Chunks : {chunks.length}</h1> */}
                     <h1>Last Time: {last.toFixed(2)}</h1>
-                    <h1>{videoUrl}</h1>
+                    {/* <h1>{videoUrl}</h1> */}
                     <h1>{b_range.start} - {b_range.end}</h1>
                     {
                         videoUrl &&
@@ -120,6 +129,7 @@ const Homie = () => {
                         onTimeUpdate={()=> setCurrentTime(videoRef.current!.currentTime)}
                         controls
                         autoPlay
+                        width={"600px"} height={"300px"}
                          />
                     }
                 </div>
