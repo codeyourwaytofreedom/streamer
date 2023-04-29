@@ -14,7 +14,7 @@ const Homie = () => {
     const [cTime, setCurrentTime] = useState(0);
 
     
-/*     useEffect(()=> {
+    useEffect(()=> {
       console.log("initial")
       const fetchData = async () => {
         try {
@@ -47,7 +47,7 @@ const Homie = () => {
       };
       fetchData();
       setRange({start:b_range.end, end:b_range.end+200000});
-    },[]); */
+    },[]);
     
     const [last, setLast] = useState(0);
 
@@ -56,17 +56,20 @@ const Homie = () => {
         
         if(cTime-videoRef.current.currentTime === 0){
           console.log("this is the spot I am looking for");
+          videoRef.current.currentTime = last;
           console.log(last)
         }
         else{
           console.log("good technique...aha");
-          console.log(cTime);
+          //console.log(cTime);
           setLast(cTime)
         }
       }
     },[cTime])
 
     const add = () => {
+      console.log("last displayed after add click",last);
+      setRange({start:b_range.end, end:b_range.end+200000});
         const fetchData = async () => {
             try {
               const response = await fetch(
@@ -98,7 +101,6 @@ const Homie = () => {
             }
           };
           fetchData();
-          setRange({start:b_range.end, end:b_range.end+200000});
     }
 
     return ( 
@@ -107,6 +109,7 @@ const Homie = () => {
             <div className={h.homie}>
                 <div>
                     <button onClick={add} ref={chunker_button}>PART ONE</button>
+                    <button onClick={()=> videoRef.current!.currentTime = 8} >MOVE TO SECOND X</button>
                     <h1>Chunks : {chunks.length}</h1>
                     <h1>Last Time: {last.toFixed(2)}</h1>
                     <h1>{videoUrl}</h1>
@@ -118,7 +121,6 @@ const Homie = () => {
                         controls
                         autoPlay
                          />
-
                     }
                 </div>
             </div>
