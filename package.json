@@ -13,17 +13,21 @@
     "@types/node": "18.16.0",
     "@types/react": "18.0.38",
     "@types/react-dom": "18.0.11",
+    "cors": "^2.8.5",
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.1",
+    "ffmpeg": "^0.0.4",
     "fluent-ffmpeg": "^2.1.2",
     "next": "13.3.1",
     "range-parser": "^1.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-player": "^2.12.0",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "video.js": "^8.3.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.13",
     "@types/fluent-ffmpeg": "^2.1.21",
     "@types/range-parser": "^1.2.4"
   }
