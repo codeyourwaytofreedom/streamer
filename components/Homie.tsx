@@ -62,7 +62,7 @@ const Homie = () => {
         }
         else{
           //console.log("good technique...aha");
-          //console.log(cTime);
+          console.log(cTime);
           setLast(cTime)
         }
       }
