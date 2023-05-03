@@ -1,3 +1,7 @@
+import Layout from '../components/Layout'
+import type { ReactElement } from 'react'
+
+
 const With_Layout = () => {
     return ( 
         <div>
@@ -7,3 +11,11 @@ const With_Layout = () => {
 }
  
 export default With_Layout;
+
+With_Layout.getLayout = function getLayout(page:ReactElement) {
+    return (
+      <Layout>
+        {page}
+      </Layout>
+    )
+  }

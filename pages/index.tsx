@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Homie from '../components/Homie'
 import Layout from '../components/Layout'
+import type { ReactElement } from 'react'
 
 export default function Home() {
   return (
@@ -15,14 +16,5 @@ export default function Home() {
           <Homie/>
       </main>
     </>
-  )
-}
-
-
-Home.getLayout = function getLayout(page:any) {
-  return (
-    <Layout>
-      {page}
-    </Layout>
   )
 }
