@@ -4,8 +4,6 @@ import fs from 'fs';
 import { createReadStream } from 'fs';
 import path from 'path';
 
-const test = [];
-
 
 export  default function handler(
   req: NextApiRequest,
