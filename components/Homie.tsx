@@ -1,5 +1,6 @@
 import h from "../styles/Homie.module.css";
-
+import { use, useEffect, useRef } from "react";
+import { useState } from "react";
 
 const Homie = () => {
     const [videoUrl, setVideoUrl] = useState<string | null>(null);
