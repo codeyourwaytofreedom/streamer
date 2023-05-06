@@ -5,30 +5,18 @@ const Homie = () => {
     let bytesReceived = 0;
   useEffect(() => {
     const mimeCodec = 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"';
+    //const mimeCodec = 'video/mp4; codecs="avc1.64001F, mp4a.40.2"';
+
     const response = fetch(`http://localhost:3000/api/streamer`, {
-      headers: { Range: "bytes=0-2999999", file:"bunny.mp4" }, // Fetch the first chunk of the video
-    }).then(res => res.arrayBuffer())
-    .then(aBuffer => {
-      console.log(aBuffer);
-      if ("MediaSource" in window && MediaSource.isTypeSupported(mimeCodec) && videoRef.current){
-        const mediaSource = new MediaSource();
-        videoRef.current!.src = URL.createObjectURL(mediaSource);
-        const pump = () => {
-          const sourceBuffer = mediaSource.addSourceBuffer(mimeCodec);
-          sourceBuffer.appendBuffer(aBuffer);
-        }
-        mediaSource.addEventListener("sourceopen", pump);
-      }
-      else {
-        console.error("Unsupported MIME type or codec: ", mimeCodec);
-      }
+      headers: { Range: "bytes=0-500", file:"bunny.mp4" }, // Fetch the first chunk of the video
     })
   }, []);
 
   return <>
-    <video ref={videoRef} controls autoPlay />
+    <video ref={videoRef} controls autoPlay>
+      <source type={"video/mp4"} src={"/api/streamer"} />
+    </video>
   </>
-  
 }
  
 export default Homie;

@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import Homie from '../components/Homie'
-import Layout from '../components/Layout'
 import type { ReactElement } from 'react'
 
 export default function Home() {
