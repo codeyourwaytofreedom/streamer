@@ -28,7 +28,7 @@ export  default function handler(
       'Content-Range': `bytes ${start}-${end}/${fileSize}`,
       'Accept-Ranges': 'bytes',
       'Content-Length': chunksize,
-      'Content-Type': 'video/mp4',
+      'Content-Type': 'video/mp4; codecs="avc1.42E01E, mp4a.40.2""',
     };
     res.writeHead(206, head);
     file.pipe(res);
@@ -36,8 +36,8 @@ export  default function handler(
   else{
     const head = {
         'Content-Length': fileSize,
-        'Content-Type': 'video/mp4',
-    };
+        'Content-Type': 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
+      };
     res.writeHead(200, head);
     fs.createReadStream(videoPath).pipe(res);
   }
