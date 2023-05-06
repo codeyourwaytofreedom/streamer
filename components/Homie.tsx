@@ -6,7 +6,7 @@ const Homie = () => {
   useEffect(() => {
     const mimeCodec = 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"';
     const response = fetch(`http://localhost:3000/api/streamer`, {
-      headers: { Range: "bytes=0-2999999", file:"tiger.mp4" }, // Fetch the first chunk of the video
+      headers: { Range: "bytes=0-2999999", file:"bunny.mp4" }, // Fetch the first chunk of the video
     }).then(res => res.arrayBuffer())
     .then(aBuffer => {
       console.log(aBuffer);
