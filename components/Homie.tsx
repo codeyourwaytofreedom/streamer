@@ -19,25 +19,40 @@ const Homie = () => {
         });
         const arrayBuffer = await response.arrayBuffer();
         sourceBuffer.appendBuffer(arrayBuffer);
-/*         bytesReceived += arrayBuffer.byteLength;
+        bytesReceived += arrayBuffer.byteLength;
 
-        setInterval(async () => {
+        const chunk_adder = setInterval(async () => {
           const start = bytesReceived;
-          const end = bytesReceived + 1000000 - 1;
+          const end = bytesReceived + 50000 - 1;
+          
+          if (bytesReceived >= 4500000) {
+            clearInterval(chunk_adder);
+            console.log("no more chunks to add")
+            return;
+          }
+          
           const response = await fetch(`http://localhost:3000/api/streamer`, {
-            headers: { Range: `bytes=${start}-${end}`, file:"tiger.mp4" },
+            headers: { Range: `bytes=${start}-${end}`, file:"she.mp4" },
           });
+          
           const arrayBuffer = await response.arrayBuffer();
           sourceBuffer.appendBuffer(arrayBuffer);
           bytesReceived += arrayBuffer.byteLength;
-        }, 2000); */
+        }, 2000);        
       });
     } else {
       console.error("Unsupported MIME type or codec: ", mimeCodec);
     }
   }, []);
 
-  return <video ref={videoRef} controls />;
+  return ( <>
+  <button>One</button>
+  <button>Two</button>
+  <button>Three</button>
+      <video ref={videoRef} controls />;
+  </>
+  )
+  
 }
 
 export default Homie;
