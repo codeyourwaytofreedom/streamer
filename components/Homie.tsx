@@ -1,5 +1,5 @@
 import h from "../styles/Homie.module.css";
-
+import { MouseEvent } from 'react';
 import { useEffect, useRef, useState } from "react";
 
 const Homie = () => {
@@ -53,23 +53,29 @@ const Homie = () => {
     } else {
       console.error("Unsupported MIME type or codec: ", mimeCodec);
     }
+    videoRef.current?.play();
   }, [vid_url]);
   
+  const handle_video_change = (e:MouseEvent<HTMLButtonElement>) => {
+    if(e.currentTarget.value !== vid_url){
+        videoRef.current?.pause();
+        clearInterval(chunkAdderId);
+        setVidUrl(e.currentTarget!.value);
+    }
+  }
 
   return ( <>
   <div className={h.homie}>
     <div>
       <div>
-      <button onClick={() => {
-            videoRef.current?.pause();
-            clearInterval(chunkAdderId);
-            setVidUrl("she.mp4");
-          }}>One
-        </button>
-        <button>Two</button>
-        <button>Three</button>
+        <button value={"boxing.mp4"} onClick={e=>handle_video_change(e)}>One</button>
+        <button value={"bunny.mp4"} onClick={e=>handle_video_change(e)}>Two</button>
+        <button value={"she.mp4"} onClick={e=>handle_video_change(e)}>Three</button>
       </div>
-      <video ref={videoRef} controls />  
+      <div className={h.homie_videocontainer}>
+          <video ref={videoRef} controls /> 
+      </div>
+       
   </div>
   </div>
   </>
