@@ -1,19 +1,26 @@
 .homie {
-  border: 2px solid red;
-  height: 100vh;
-  display: grid;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  border: 2px solid black;
+}
+.homie_topBanner {
+  background-color: rgb(255, 215, 0);
+  height: 190px;
 }
 .homie_videocontainer {
-  width: 500px;
-  height: 400px;
-  border: 3px solid orange;
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
   background-color: black;
 }
 .homie video {
   width: 100%;
   height: 100%;
+  max-width: 600px;
   -o-object-fit: contain;
      object-fit: contain;
+  padding-top: 50px;
+  position: relative;
+  top: -50px;
+  background-color: black;
 }/*# sourceMappingURL=Homie.module.css.map */

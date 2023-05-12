@@ -64,36 +64,20 @@ const Homie = () => {
     }
   }
 
-  return ( <>
+  return ( 
   <div className={h.homie}>
-    <div>
+      <div className={h.homie_topBanner}></div>
+      <div className={h.homie_videocontainer}>
+          <video ref={videoRef} controls /> 
+      </div>
       <div>
         <button value={"boxing.mp4"} onClick={e=>handle_video_change(e)}>One</button>
         <button value={"bunny.mp4"} onClick={e=>handle_video_change(e)}>Two</button>
         <button value={"she.mp4"} onClick={e=>handle_video_change(e)}>Three</button>
       </div>
-      <div className={h.homie_videocontainer}>
-          <video ref={videoRef} controls /> 
-      </div>
-       
   </div>
-  </div>
-  </>
   )
   
 }
 
 export default Homie;
-
-/*         bytesReceived += arrayBuffer.byteLength;
-        
-        setInterval(async () => {
-          const start = bytesReceived;
-          const end = bytesReceived + 1000000 - 1;
-          const response = await fetch(`http://localhost:3000/api/streamer`, {
-            headers: { Range: `bytes=${start}-${end}`, file:"boxing.mp4" },
-          });
-          const arrayBuffer = await response.arrayBuffer();
-          sourceBuffer.appendBuffer(arrayBuffer);
-          bytesReceived += arrayBuffer.byteLength;
-        }, 1000); */
