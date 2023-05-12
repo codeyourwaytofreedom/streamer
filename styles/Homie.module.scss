@@ -6,6 +6,21 @@ $main-gold: rgb(255, 215, 0);
     &_topBanner{
         background-color: $main-gold;
         height: 190px;
+        position: relative;
+        #one{
+            width: 150px;
+            height: auto;
+            position: absolute;
+            bottom: -7px;
+            left: 5%;
+        }
+        #two{
+            width: 150px;
+            height: auto;
+            position: absolute;
+            bottom: -7px;
+            right: 5%;
+        }
     }
     &_videocontainer{
         width: 100%;
@@ -19,9 +34,7 @@ $main-gold: rgb(255, 215, 0);
         height: 100%;
         max-width: 600px;
         object-fit: contain;
-        padding-top: 50px;
         position: relative;
-        top:-50px;
         background-color: black;
     }
 }
