@@ -2,6 +2,8 @@ import h from "../styles/Homie.module.css";
 import { MouseEvent } from 'react';
 import { useEffect, useRef, useState } from "react";
 import one from "../public/one.svg";
+import plaster from "../public/plaster.svg";
+
 import Image from "next/image";
 
 const Homie = () => {
@@ -69,8 +71,8 @@ const Homie = () => {
   return ( 
   <div className={h.homie}>
       <div className={h.homie_topBanner}>
-        <Image alt={"shape"} src={one} id={h.one}/>
-        <Image alt={"shape"} src={one} id={h.two}/>
+        <Image alt={"shape"} src={plaster} id={h.one}/>
+        <Image alt={"shape"} src={plaster} id={h.two}/>
       </div>
       <div className={h.homie_videocontainer}>
           <video ref={videoRef} controls /> 

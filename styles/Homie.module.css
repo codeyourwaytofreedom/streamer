@@ -4,22 +4,24 @@
 }
 .homie_topBanner {
   background-color: rgb(255, 215, 0);
-  height: 190px;
+  height: 140px;
   position: relative;
 }
 .homie_topBanner #one {
-  width: 150px;
+  width: 80px;
   height: auto;
   position: absolute;
-  bottom: -7px;
+  bottom: -45px;
   left: 5%;
+  z-index: 9 !important;
 }
 .homie_topBanner #two {
-  width: 150px;
+  width: 80px;
   height: auto;
   position: absolute;
-  bottom: -7px;
+  bottom: -45px;
   right: 5%;
+  z-index: 9 !important;
 }
 .homie_videocontainer {
   width: 100%;
@@ -36,4 +38,5 @@
      object-fit: contain;
   position: relative;
   background-color: black;
+  padding-top: 90px;
 }/*# sourceMappingURL=Homie.module.css.map */
