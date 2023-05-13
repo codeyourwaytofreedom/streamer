@@ -5,23 +5,35 @@ $main-gold: rgb(255, 215, 0);
     border:2px solid black;
     &_topBanner{
         background-color: $main-gold;
-        height: 140px;
+        height: 100px;
         position: relative;
         #one{
             width: 80px;
             height: auto;
             position: absolute;
-            bottom: -45px;
-            left: 5%;
+            left: 3%;
+            top:20px;
             z-index: 9 !important;
         }
         #two{
             width: 80px;
             height: auto;
             position: absolute;
-            bottom: -45px;
-            right: 5%;
+            bottom: -80px;
+            left: 9%;
             z-index: 9 !important;
+        }
+        #three, #four{
+            width: 70px;
+            height: auto;
+            position: absolute;
+            left: 9%;
+            top:20px;
+            z-index: 9 !important;
+        }
+        #four{
+            top:110px;
+            left: 3%;
         }
     }
     &_videocontainer{
@@ -30,14 +42,25 @@ $main-gold: rgb(255, 215, 0);
         display: flex;
         justify-content: center;
         background-color: black;
+        video{
+            width: 100%;
+            height: 100%;
+            max-width: 600px;
+            object-fit: contain;
+            position: relative;
+            background-color: black;
+            padding-top: 90px;
+        }
     }
-    video{
-        width: 100%;
-        height: 100%;
-        max-width: 600px;
-        object-fit: contain;
-        position: relative;
-        background-color: black;
-        padding-top: 90px;
+    &_fights{
+        margin-top: 30px;
+        border: 2px solid white;
+        height: 100px;
+        display: flex;
+        column-gap: 20px;
+        padding: 10px 20px;
+        button{
+            width: 100px;
+        }
     }
 }

@@ -4,24 +4,36 @@
 }
 .homie_topBanner {
   background-color: rgb(255, 215, 0);
-  height: 140px;
+  height: 100px;
   position: relative;
 }
 .homie_topBanner #one {
   width: 80px;
   height: auto;
   position: absolute;
-  bottom: -45px;
-  left: 5%;
+  left: 3%;
+  top: 20px;
   z-index: 9 !important;
 }
 .homie_topBanner #two {
   width: 80px;
   height: auto;
   position: absolute;
-  bottom: -45px;
-  right: 5%;
+  bottom: -80px;
+  left: 9%;
   z-index: 9 !important;
+}
+.homie_topBanner #three, .homie_topBanner #four {
+  width: 70px;
+  height: auto;
+  position: absolute;
+  left: 9%;
+  top: 20px;
+  z-index: 9 !important;
+}
+.homie_topBanner #four {
+  top: 110px;
+  left: 3%;
 }
 .homie_videocontainer {
   width: 100%;
@@ -30,7 +42,7 @@
   justify-content: center;
   background-color: black;
 }
-.homie video {
+.homie_videocontainer video {
   width: 100%;
   height: 100%;
   max-width: 600px;
@@ -39,4 +51,16 @@
   position: relative;
   background-color: black;
   padding-top: 90px;
+}
+.homie_fights {
+  margin-top: 30px;
+  border: 2px solid white;
+  height: 100px;
+  display: flex;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  padding: 10px 20px;
+}
+.homie_fights button {
+  width: 100px;
 }/*# sourceMappingURL=Homie.module.css.map */

@@ -1,8 +1,9 @@
 import h from "../styles/Homie.module.css";
 import { MouseEvent } from 'react';
 import { useEffect, useRef, useState } from "react";
-import one from "../public/one.svg";
-import plaster from "../public/plaster.svg";
+import punch from "../public/punch.svg";
+import punchtwo from "../public/punchtwo.svg";
+import puncher from "../public/puncher.svg";
 
 import Image from "next/image";
 
@@ -71,13 +72,15 @@ const Homie = () => {
   return ( 
   <div className={h.homie}>
       <div className={h.homie_topBanner}>
-        <Image alt={"shape"} src={plaster} id={h.one}/>
-        <Image alt={"shape"} src={plaster} id={h.two}/>
+        <Image alt={"punch"} src={punch} id={h.one}/>
+        <Image alt={"punch"} src={punchtwo} id={h.two}/>
+        <Image alt={"puncher"} src={puncher} id={h.three}/>
+        <Image alt={"puncher"} src={puncher} id={h.four}/>
       </div>
       <div className={h.homie_videocontainer}>
           <video ref={videoRef} controls /> 
       </div>
-      <div>
+      <div className={h.homie_fights}>
         <button value={"boxing.mp4"} onClick={e=>handle_video_change(e)}>One</button>
         <button value={"bunny.mp4"} onClick={e=>handle_video_change(e)}>Two</button>
         <button value={"she.mp4"} onClick={e=>handle_video_change(e)}>Three</button>
