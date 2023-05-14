@@ -6,10 +6,11 @@ import punchtwo from "../public/punchtwo.svg";
 import puncher from "../public/puncher.svg";
 
 import Image from "next/image";
+import Fights_row from "./Fights";
 
 const Homie = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [vid_url, setVidUrl] = useState<string>("boxing.mp4")
+  const [vid_url, setVidUrl] = useState<string>("bunny.mp4")
   const [chunkAdderId, setChunkAdderId] = useState<NodeJS.Timer | undefined>();
 
   let sourceBuffer: SourceBuffer;
@@ -42,7 +43,6 @@ const Homie = () => {
   
             if (end === size || start === size) {
               clearInterval(chunk_adder);
-              console.log("no more chunks to add")
               return;
             }
             const response = await fetch(`http://localhost:3000/api/streamer`, {
@@ -80,11 +80,7 @@ const Homie = () => {
       <div className={h.homie_videocontainer}>
           <video ref={videoRef} controls /> 
       </div>
-      <div className={h.homie_fights}>
-        <button value={"boxing.mp4"} onClick={e=>handle_video_change(e)}>One</button>
-        <button value={"bunny.mp4"} onClick={e=>handle_video_change(e)}>Two</button>
-        <button value={"she.mp4"} onClick={e=>handle_video_change(e)}>Three</button>
-      </div>
+      <Fights_row handle_video_change={handle_video_change} />
   </div>
   )
   

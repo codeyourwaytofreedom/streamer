@@ -3,30 +3,6 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import fs from 'fs';
 import { createReadStream } from 'fs';
 import path from 'path';
-const ffmpeg = require('fluent-ffmpeg');
-
-
-
-
-
-
-const vPath = path.join(process.cwd(), "excluded", "she.mp4");
-const thumbnailPath = path.join(process.cwd(), "excluded", "thumbnail.jpg");
-
-ffmpeg(vPath)
-  .screenshots({
-    count: 1,
-    folder: path.dirname(thumbnailPath),
-    filename: path.basename(thumbnailPath),
-    size: '320x240',
-  })
-  .on('end', () => {
-    console.log('Thumbnail created successfully!');
-  })
-  .on('error', (err:any) => {
-    console.error('Error creating thumbnail:', err);
-  });
-
 
 
 export default function handler(
