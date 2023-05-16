@@ -1,8 +1,38 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import path from 'path';
+import { join } from 'path';
 import Ffmpeg from 'fluent-ffmpeg';
-import fs from 'fs';
+import { createReadStream } from "fs";
 
+const folderName = 'excluded';
+const folderPath = path.join(process.cwd(), folderName);
+
+//create thumbnails for all videos
+/* fs.readdir(folderPath, async (err, files) => {
+  if (err) {
+    console.error(err);
+    return;
+  }
+
+  try {
+    const fileContents = await Promise.all(files.map(async (file,index) => {
+      const filePath = path.join(folderPath, file);
+      const thumbnailPath = path.join(process.cwd(), "excluded/thumbs", `${index}.jpg`);
+      await generateThumbnail(filePath, thumbnailPath);
+      return;
+    }));
+    
+    console.log(fileContents);
+  } catch (error) {
+    console.error(error);
+  }
+}); */
+
+
+const Thumb_Path = path.join(process.cwd(), "excluded/thumbs");
+
+
+// thumbnail creation function that is used above
 async function generateThumbnail(videoPath: string, thumbnailPath: string): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       Ffmpeg(videoPath)
@@ -27,27 +57,49 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-    const vPath = path.join(process.cwd(), "excluded", "bunny.mp4");
-    const thumbnailPath = path.join(process.cwd(), "excluded", "thumbnail.jpg");
-    try {
-        await generateThumbnail(vPath, thumbnailPath);
-        console.log('Thumbnail generated successfully');
+  const imageNames = ['0.jpg', '1.jpg', '2.jpg'];
+  const imageData = await Promise.all(
+    imageNames.map(async (name) => {
+      const imagePath = join(process.cwd(), 'excluded/thumbs', name);
+      const imageBuffer = await new Promise<Buffer>((resolve, reject) => {
+        const stream = createReadStream(imagePath);
+        const chunks: Buffer[] = [];
 
-        // Read the thumbnail image file contents
-        const thumbnailData = fs.readFileSync(thumbnailPath);
+        stream.on('data', (chunk) => chunks.push(chunk as Buffer));
+        stream.on('error', reject);
+        stream.on('end', () => resolve(Buffer.concat(chunks)));
+      });
+      return { name, data: imageBuffer.toString('base64') };
+    })
+  );
 
-        // Set the response headers and send the file contents
-        res.setHeader('Content-Type', 'image/jpeg');
-        res.send(thumbnailData);
-
-        res.send(thumbnailPath);
-      } catch (error) {
-        console.error('Error generating thumbnail:', error);
-        res.status(500).send('Error generating thumbnail');
-      }
+  res.status(200).json(imageData);
 }
 
 
 
 
 
+/* const vPath = path.join(process.cwd(), "excluded", "bunny.mp4");
+const thumbnailPath = path.join(process.cwd(), "excluded", "thumbnail.jpg");
+try {
+    await generateThumbnail(vPath, thumbnailPath);
+    console.log('Thumbnail generated successfully');
+
+    // Read the thumbnail image file contents
+    const thumbnailData = fs.readFileSync(thumbnailPath);
+
+    // Set the response headers and send the file contents
+    res.setHeader('Content-Type', 'image/jpeg');
+    res.send(thumbnailData);
+
+  } catch (error) {
+    console.error('Error generating thumbnail:', error);
+    res.status(500).send('Error generating thumbnail');
+  }
+  
+  const thumbPath = path.join(process.cwd(), 'excluded/thumbs');
+  const files = fs.readdirSync(thumbPath);
+  const images = files.map(file => `${thumbPath}/${file}`);
+  console.log(images, "xxxxx")
+  res.status(200).json({ images }); */
