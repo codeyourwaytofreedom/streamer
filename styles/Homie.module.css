@@ -56,11 +56,16 @@
   margin-top: 30px;
   border: 2px solid white;
   height: 100px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   -moz-column-gap: 20px;
        column-gap: 20px;
   padding: 10px 20px;
   color: yellow;
+}
+.homie_fights img {
+  width: 30vw;
+  height: auto;
 }
 .homie_fights button {
   width: 100px;

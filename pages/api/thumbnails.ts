@@ -3,6 +3,7 @@ import path from 'path';
 import { join } from 'path';
 import Ffmpeg from 'fluent-ffmpeg';
 import { createReadStream } from "fs";
+import fs from "fs";
 
 const folderName = 'excluded';
 const folderPath = path.join(process.cwd(), folderName);
@@ -17,7 +18,7 @@ const folderPath = path.join(process.cwd(), folderName);
   try {
     const fileContents = await Promise.all(files.map(async (file,index) => {
       const filePath = path.join(folderPath, file);
-      const thumbnailPath = path.join(process.cwd(), "excluded/thumbs", `${index}.jpg`);
+      const thumbnailPath = path.join(process.cwd(), "excluded/thumbs", `${file.split(".")[0]}.jpg`);
       await generateThumbnail(filePath, thumbnailPath);
       return;
     }));
@@ -29,9 +30,6 @@ const folderPath = path.join(process.cwd(), folderName);
 }); */
 
 
-const Thumb_Path = path.join(process.cwd(), "excluded/thumbs");
-
-
 // thumbnail creation function that is used above
 async function generateThumbnail(videoPath: string, thumbnailPath: string): Promise<void> {
     return new Promise<void>((resolve, reject) => {
@@ -40,7 +38,7 @@ async function generateThumbnail(videoPath: string, thumbnailPath: string): Prom
           count: 1,
           folder: path.dirname(thumbnailPath),
           filename: path.basename(thumbnailPath),
-          size: '320x240',
+          size: '600x400',
         })
         .on('end', () => {
           console.log('Thumbnail created successfully!');
@@ -57,9 +55,12 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const imageNames = ['0.jpg', '1.jpg', '2.jpg'];
+
+  const thumbPath = path.join(process.cwd(), 'excluded/thumbs');
+  const files = fs.readdirSync(thumbPath);
+
   const imageData = await Promise.all(
-    imageNames.map(async (name) => {
+    files.map(async (name) => {
       const imagePath = join(process.cwd(), 'excluded/thumbs', name);
       const imageBuffer = await new Promise<Buffer>((resolve, reject) => {
         const stream = createReadStream(imagePath);
@@ -72,6 +73,7 @@ export default async function handler(
       return { name, data: imageBuffer.toString('base64') };
     })
   );
+
 
   res.status(200).json(imageData);
 }
