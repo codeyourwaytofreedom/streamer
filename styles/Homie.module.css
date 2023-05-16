@@ -55,7 +55,6 @@
 .homie_fights {
   margin-top: 30px;
   border: 2px solid white;
-  height: 100px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   -moz-column-gap: 20px;
