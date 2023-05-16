@@ -13,12 +13,13 @@ const Homie = () => {
   return ( 
   <div className={h.homie}>
       <div className={h.homie_topBanner}>
-        <Image alt={"punch"} src={punch} id={h.one}/>
-        <Image alt={"punch"} src={punchtwo} id={h.two}/>
-        <Image alt={"puncher"} src={puncher} id={h.three}/>
-        <Image alt={"puncher"} src={puncher} id={h.four}/>
+        <div className={h.grid}>
+          <div><Image alt={"punch"} src={punch}/></div>
+          <div> <Image alt={"puncher"} src={puncher}/></div>
+          <div><Image alt={"puncher"} src={puncher}/></div>
+          <div><Image alt={"punch"} src={punch}/></div>
+        </div>
       </div>
-
       <Fights_row/>
   </div>
   )

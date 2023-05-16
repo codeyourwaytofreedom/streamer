@@ -20,9 +20,8 @@ const Fights_row = () => {
             <button value={"she.mp4"} onClick={e=>handle_video_change(e)}>Three</button> */}
 
             {  images.length !== 0 && images.map((image,index) => (
-                <Link href={`/watch/${image.name.split(".")[0]}.mp4`}>
+                <Link href={`/watch/${image.name.split(".")[0]}.mp4`} key={index}>
                     <Image
-                    key={index}
                     src={`data:image/jpeg;base64,${image.data}`}
                     alt={image.name}
                     width={400}
