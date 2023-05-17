@@ -1,12 +1,16 @@
 .homie {
   position: relative;
+  padding-top: 80px;
 }
 .homie_topBanner {
-  position: relative;
+  background-color: white;
+  position: fixed;
+  top: 0;
   display: flex;
   align-items: center;
-  padding-left: 2vw;
-  border: 1px solid silver;
+  left: 2vw;
+  width: 94vw;
+  border-bottom: 1px solid silver;
 }
 .homie_topBanner .grid {
   display: grid;
@@ -54,17 +58,54 @@
 }
 .homie_fights {
   margin-top: 15px;
-  border: 2px solid white;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  gap: 1vw;
   padding: 10px 2vw;
-  color: yellow;
+  padding-left: calc(80px + 4vw);
+  justify-items: center;
+  padding-right: 3vw;
 }
-.homie_fights img {
-  width: 31vw;
-  height: 20vw;
-  border-radius: 10px;
+.homie_fights_each img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
 }
-.homie_fights button {
-  width: 100px;
+.homie_fights_column {
+  position: fixed;
+  left: 2vw;
+  border: 2px solid red;
+  width: 80px;
+  height: 90vh;
+  max-height: 600px;
+}
+
+@media (max-width: 991.98px) {
+  .homie_topBanner {
+    border-bottom: 1px solid blue;
+  }
+  .homie_fights {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 767.98px) {
+  .homie_topBanner {
+    border-bottom: 1px solid red;
+  }
+  .homie_fights {
+    grid-template-columns: 1fr;
+  }
+  .homie_fights_each {
+    max-width: 400px;
+  }
+}
+@media (max-width: 575.98px) {
+  .homie_topBanner {
+    border-bottom: 1px solid green;
+  }
+  .homie_fights_each {
+    width: calc(90vw - 80px);
+  }
 }/*# sourceMappingURL=Homie.module.css.map */

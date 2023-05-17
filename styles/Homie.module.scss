@@ -2,8 +2,15 @@ $main-gold: rgb(255, 215, 0);
 
 .homie{
     position: relative;
+    padding-top: 80px;
     &_topBanner{
-        //background-color: $main-gold;
+        background-color: white;
+        position: fixed;
+        top: 0;
+        display: flex;
+        align-items: center;
+        left: 2vw; width: 94vw;
+        border-bottom:1px solid silver;
         .grid{
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -30,11 +37,6 @@ $main-gold: rgb(255, 215, 0);
                 border-right: 2px solid black;
             }
         }
-        position: relative;
-        display: flex;
-        align-items: center;
-        padding-left: 2vw;
-        border:1px solid silver;
     }
 
     &_videocontainer{
@@ -55,18 +57,76 @@ $main-gold: rgb(255, 215, 0);
     }
     &_fights{
         margin-top: 15px;
-        border: 2px solid white;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
+        gap: 1vw;
         padding: 10px 2vw;
-        img{
-            width: 31vw;
-            height: 20vw;
-            border-radius: 10px;
+        padding-left: calc(80px + 4vw);
+        justify-items: center;
+        padding-right: 3vw;
+        &_each{
+            img{
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+                border-radius: 15px;
+            }
         }
-        button{
-            width: 100px;
+        &_column{
+            position: fixed;
+            left:2vw;
+            border: 2px solid red;
+            width: 80px;
+            height: 90vh;
+            max-height: 600px;
         }
-        color: yellow;
     }
 }
+
+
+
+@media (max-width: 991.98px) { 
+    .homie{
+        &_topBanner{
+            border-bottom:1px solid blue;
+        }
+        &_fights{
+            grid-template-columns: 1fr 1fr;
+            &_each{
+
+            }
+        }
+    }
+ }
+
+
+@media (max-width: 767.98px) { 
+    .homie{
+        &_topBanner{
+            border-bottom:1px solid red;
+        }
+        &_fights{
+            grid-template-columns: 1fr;
+            &_each{
+                max-width: 400px;
+            }
+        }
+    }
+ }
+
+
+@media (max-width: 575.98px) { 
+    .homie{
+        &_topBanner{
+            border-bottom:1px solid green;
+        }
+        &_fights{
+            &_each{
+                width: calc(90vw - 80px);
+            }
+        }
+    }
+ }
+
+
+
