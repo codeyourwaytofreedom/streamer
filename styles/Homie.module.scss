@@ -37,6 +37,19 @@ $main-gold: rgb(255, 215, 0);
                 border-right: 2px solid black;
             }
         }
+        &_menu{
+            padding-left: 2vw;
+            display: flex;
+            column-gap: 1vw;
+            &_double{
+                border: 2px solid gray;
+                display: flex;
+                column-gap:5px;
+                padding: 3px 5px;
+                border-radius: 5px;
+                white-space: nowrap;
+            }
+        }
     }
 
     &_videocontainer{
@@ -77,8 +90,6 @@ $main-gold: rgb(255, 215, 0);
             left:2vw;
             border: 2px solid red;
             width: 80px;
-            height: 90vh;
-            max-height: 600px;
         }
     }
 }

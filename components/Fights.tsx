@@ -16,8 +16,8 @@ const Fights_row = () => {
     return ( 
         <div className={h.homie_fights}>
             {  images.length !== 0 && images.map((image,index) => (
-              <div className={h.homie_fights_each}>
-                  <Link href={`/watch/${image.name.split(".")[0]}.mp4`} key={index}>
+              <div className={h.homie_fights_each} key={index}>
+                  <Link href={`/watch/${image.name.split(".")[0]}.mp4`}>
                       <Image
                       src={`data:image/jpeg;base64,${image.data}`}
                       alt={image.name}

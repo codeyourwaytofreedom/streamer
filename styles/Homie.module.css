@@ -39,6 +39,21 @@
 .homie_topBanner .grid :nth-child(3) {
   border-right: 2px solid black;
 }
+.homie_topBanner_menu {
+  padding-left: 2vw;
+  display: flex;
+  -moz-column-gap: 1vw;
+       column-gap: 1vw;
+}
+.homie_topBanner_menu_double {
+  border: 2px solid gray;
+  display: flex;
+  -moz-column-gap: 5px;
+       column-gap: 5px;
+  padding: 3px 5px;
+  border-radius: 5px;
+  white-space: nowrap;
+}
 .homie_videocontainer {
   width: 100%;
   height: 500px;
@@ -78,8 +93,6 @@
   left: 2vw;
   border: 2px solid red;
   width: 80px;
-  height: 90vh;
-  max-height: 600px;
 }
 
 @media (max-width: 991.98px) {
