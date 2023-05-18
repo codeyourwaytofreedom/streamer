@@ -27,7 +27,20 @@ const Fights_row = () => {
                   </Link>
               </div>
             ))}
-          <div className={h.homie_fights_column}>Hello</div>
+          <div className={h.homie_fights_column}>
+            <div className={h.homie_fights_column_each}>
+              <div><Image src={"/game.png"} width={30} height={30} alt={"training"}/></div>
+              <div>Fights</div>
+            </div>
+            <div className={h.homie_fights_column_each}>
+              <div><Image src={"/workout.png"} width={30} height={30} alt={"training"}/></div>
+              <div>Workouts</div>
+            </div>
+            <div className={h.homie_fights_column_each}>
+              <div><Image src={"/interview.png"} width={30} height={30} alt={"training"}/></div>
+              <div>Interviews</div>
+            </div>
+          </div>
         </div>
      );
 }

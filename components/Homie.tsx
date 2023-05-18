@@ -7,6 +7,7 @@ import puncher from "../public/puncher.svg";
 
 import Image from "next/image";
 import Fights_row from "./Fights";
+import { CacheHandler } from "next/dist/server/lib/incremental-cache";
 
 const Homie = () => {
   const weight_classes = ["featherweight","lightweight","welterweight","middleweight","light heavyweight","cruiserweight","heavyweight"]
@@ -23,12 +24,15 @@ const Homie = () => {
             {
               weight_classes.map((c,i )=>
             <div className={h.homie_topBanner_menu_double} key={i}>
-              <Image src={"/dumbbell.png"} alt={"dumbbell"} width={30} height={30}/>
-              <span>{c}</span>
+             <span>{c}</span>
             </div>
             )
             }
         </div>
+        <div id={h.name}>
+          MyTube
+        </div>
+        
       </div>
       <Fights_row/>
   </div>

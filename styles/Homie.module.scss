@@ -11,6 +11,7 @@ $main-gold: rgb(255, 215, 0);
         align-items: center;
         left: 2vw; width: 94vw;
         border-bottom:1px solid silver;
+        overflow: hidden;
         .grid{
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -42,13 +43,25 @@ $main-gold: rgb(255, 215, 0);
             display: flex;
             column-gap: 1vw;
             &_double{
-                border: 2px solid gray;
+                background-color: rgb(241, 239, 239);
                 display: flex;
                 column-gap:5px;
-                padding: 3px 5px;
+                padding: 5px 10px;
                 border-radius: 5px;
                 white-space: nowrap;
+                font-weight: 300;
             }
+        }
+        #name{
+            border: 2px solid red;
+            height: 80px;
+            position: fixed;
+            right: 3vw;
+            width: 100px;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            font-size: xx-large;
         }
     }
 
@@ -88,8 +101,18 @@ $main-gold: rgb(255, 215, 0);
         &_column{
             position: fixed;
             left:2vw;
-            border: 2px solid red;
+            //border: 2px solid red;
             width: 80px;
+            display: grid;
+            row-gap: 30px;
+            &_each{
+                div{
+                    display: grid;
+                    justify-content: center;
+                    align-items: center;
+                    font-weight: 300;
+                }
+            }
         }
     }
 }
@@ -132,8 +155,9 @@ $main-gold: rgb(255, 215, 0);
             border-bottom:1px solid green;
         }
         &_fights{
+            padding-left: 80px;
             &_each{
-                width: calc(90vw - 80px);
+                width: calc(90vw - 70px);
             }
         }
     }
