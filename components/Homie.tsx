@@ -2,7 +2,7 @@ import h from "../styles/Homie.module.css";
 import { MouseEvent } from 'react';
 import { useEffect, useRef, useState } from "react";
 import punch from "../public/punch.svg";
-import punchtwo from "../public/punchtwo.svg";
+import video from "../public/video.png";
 import puncher from "../public/puncher.svg";
 
 import Image from "next/image";
@@ -30,7 +30,11 @@ const Homie = () => {
             }
         </div>
         <div id={h.name}>
-          MyTube
+          <div id={h.double}>
+            <div>My</div>
+            <div><Image alt={"play"} src={video}/></div>
+          </div>
+          Tube
         </div>
         
       </div>
