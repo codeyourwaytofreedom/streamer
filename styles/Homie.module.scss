@@ -2,11 +2,12 @@ $main-gold: rgb(255, 215, 0);
 
 .homie{
     position: relative;
-    padding-top: 80px;
+    padding-top: 90px;
     &_topBanner{
         background-color: white;
         position: fixed;
         top: 0;
+        padding-top: 10px;
         display: flex;
         align-items: center;
         left: 2vw; width: 94vw;
@@ -52,10 +53,12 @@ $main-gold: rgb(255, 215, 0);
                 border-radius: 5px;
                 white-space: nowrap;
                 font-weight: 300;
+                border: none;
+                background: transparent;
+                font-size: large;
             }
         }
         #name{
-            //border: 2px solid red;
             height: 80px;
             position: fixed;
             right: 1vw;
@@ -69,6 +72,19 @@ $main-gold: rgb(255, 215, 0);
             letter-spacing: -4px;
             font-weight: 300;
             color: crimson;
+            #forward{
+                font-size: large;
+                position: relative;
+                right: 20px;
+                border: 2px solid red;
+                height: 100%;
+                width: 30px;
+                display: grid;
+                align-items: center;
+                justify-content: center;
+                background-color: white;
+                visibility: hidden;
+            }
             #double{
                 letter-spacing: 0;
                 font-size: 25px;

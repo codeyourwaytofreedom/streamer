@@ -4,13 +4,24 @@ import { useEffect, useRef, useState } from "react";
 import punch from "../public/punch.svg";
 import video from "../public/video.png";
 import puncher from "../public/puncher.svg";
-
 import Image from "next/image";
 import Fights_row from "./Fights";
-import { CacheHandler } from "next/dist/server/lib/incremental-cache";
 
 const Homie = () => {
-  const weight_classes = ["featherweight","lightweight","welterweight","middleweight","light heavyweight","cruiserweight","heavyweight"]
+  const weight_classes = ["Featherweight","Lightweight","Welterweight","Middleweight","light heavyweight","Cruiserweight","Heavyweight","Champions"]
+  
+  const forward = useRef<HTMLDivElement>(null);
+  const anchor = useRef<HTMLDivElement>(null);
+
+  useEffect(()=>{
+    window.addEventListener("resize", ()=>{
+      if(forward.current && anchor.current){
+        console.log(forward.current.offsetLeft,anchor.current.offsetLeft);
+        console.log(forward.current.offsetLeft - anchor.current.offsetLeft)
+      }
+    })
+  },[])
+  
   return ( 
   <div className={h.homie}>
       <div className={h.homie_topBanner}>
@@ -23,18 +34,20 @@ const Homie = () => {
         <div className={h.homie_topBanner_menu}>
             {
               weight_classes.map((c,i )=>
-            <div className={h.homie_topBanner_menu_double} key={i}>
+            <button className={h.homie_topBanner_menu_double} key={i}>
              <span>{c}</span>
-            </div>
+            </button>
             )
             }
+            <div ref={anchor}>.</div>
         </div>
-        <div id={h.name}>
+        <div id={h.name} ref={forward}>
+          <div id={h.forward}>X</div>
           <div id={h.double}>
             <div>My</div>
             <div><Image alt={"play"} src={video}/></div>
           </div>
-          Tube
+            Tube
         </div>
         
       </div>
