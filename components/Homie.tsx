@@ -12,15 +12,59 @@ const Homie = () => {
   
   const forward = useRef<HTMLDivElement>(null);
   const anchor = useRef<HTMLDivElement>(null);
+  const [arrow_vis, setArrowVis] = useState(false);
+  const [traX, setX] = useState<number>(0);
+  const [distance, setDistance] = useState<number>(0);
+
+  const [widthChange, setWidthChange] = useState(0);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const currentWidth = window.innerWidth;
+
+      const widthChange = currentWidth - previousWidth;
+
+      setWidthChange(widthChange);
+
+      // Update previous size with the current size
+      previousWidth = currentWidth;
+    }
+
+    let previousWidth = window.innerWidth;
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
 
   useEffect(()=>{
+    if(forward.current && anchor.current){
+      setDistance(forward.current.offsetLeft - anchor.current.offsetLeft)
+    }
+    if(traX !== 0){
+      console.log("new calc needed")
+    }
+    
     window.addEventListener("resize", ()=>{
       if(forward.current && anchor.current){
-        console.log(forward.current.offsetLeft,anchor.current.offsetLeft);
-        console.log(forward.current.offsetLeft - anchor.current.offsetLeft)
+
+        if(traX !== 0){
+          console.log("equality destroyed")
+        }
+
+        setDistance(forward.current.offsetLeft - anchor.current.offsetLeft)
+        if(forward.current.offsetLeft - anchor.current.offsetLeft < 100){
+          setArrowVis(true)
+        }
+        else{
+          setArrowVis(false)
+        }
       }
     })
-  },[])
+  },[traX])
   
   return ( 
   <div className={h.homie}>
@@ -31,7 +75,7 @@ const Homie = () => {
           <div><Image alt={"puncher"} src={puncher}/></div>
           <div><Image alt={"punch"} src={punch}/></div>
         </div>
-        <div className={h.homie_topBanner_menu}>
+        <div className={h.homie_topBanner_menu} style={{ transform: `translateX(${traX}px)` }}>
             {
               weight_classes.map((c,i )=>
             <button className={h.homie_topBanner_menu_double} key={i}>
@@ -42,15 +86,15 @@ const Homie = () => {
             <div ref={anchor}>.</div>
         </div>
         <div id={h.name} ref={forward}>
-          <div id={h.forward}>X</div>
+          <button onClick={()=>setX(traX-50)} id={h.forward} style={{visibility: arrow_vis ? "visible" : "hidden"}}>X</button>
           <div id={h.double}>
             <div>My</div>
             <div><Image alt={"play"} src={video}/></div>
           </div>
             Tube
         </div>
-        
       </div>
+      <h1>Distance: {distance} - Tra_X: {traX} - Difference: {distance-traX} Width-Change: {widthChange}</h1>
       <Fights_row/>
   </div>
   )
