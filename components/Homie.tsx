@@ -24,6 +24,11 @@ const Homie = () => {
 
       const widthChange = currentWidth - previousWidth;
 
+      if(traX < 0){
+        console.log(traX,"0 dan büyük değil")
+        setX(traX + widthChange)
+      }
+
       setWidthChange(widthChange);
 
       // Update previous size with the current size
@@ -37,24 +42,16 @@ const Homie = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [traX]);
 
 
   useEffect(()=>{
     if(forward.current && anchor.current){
-      setDistance(forward.current.offsetLeft - anchor.current.offsetLeft)
-    }
-    if(traX !== 0){
-      console.log("new calc needed")
+      setDistance(forward.current.offsetLeft - anchor.current.offsetLeft - 15)
     }
     
     window.addEventListener("resize", ()=>{
       if(forward.current && anchor.current){
-
-        if(traX !== 0){
-          console.log("equality destroyed")
-        }
-
         setDistance(forward.current.offsetLeft - anchor.current.offsetLeft)
         if(forward.current.offsetLeft - anchor.current.offsetLeft < 100){
           setArrowVis(true)
@@ -66,6 +63,18 @@ const Homie = () => {
     })
   },[traX])
   
+  const handle_forward = () =>{
+    if(distance-traX < 100){
+      setArrowVis(true)
+    }
+    else{
+      setArrowVis(false)
+    }
+    if(arrow_vis){
+      setX(traX-50)
+    }
+  }
+
   return ( 
   <div className={h.homie}>
       <div className={h.homie_topBanner}>
@@ -86,7 +95,7 @@ const Homie = () => {
             <div ref={anchor}>.</div>
         </div>
         <div id={h.name} ref={forward}>
-          <button onClick={()=>setX(traX-50)} id={h.forward} style={{visibility: arrow_vis ? "visible" : "hidden"}}>X</button>
+          <button onClick={handle_forward} id={h.forward} style={{visibility: arrow_vis ? "visible" : "hidden"}}>X</button>
           <div id={h.double}>
             <div>My</div>
             <div><Image alt={"play"} src={video}/></div>

@@ -20,6 +20,8 @@
   padding: 5px;
   -webkit-animation: oval 4s infinite;
           animation: oval 4s infinite;
+  background-color: white;
+  z-index: 5;
 }
 .homie_topBanner .grid img {
   -o-object-fit: contain;
