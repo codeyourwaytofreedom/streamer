@@ -8,11 +8,10 @@ import Image from "next/image";
 import Fights_row from "./Fights";
 
 const Homie = () => {
-  const weight_classes = ["Featherweight","Lightweight","Welterweight","Middleweight","light heavyweight","Cruiserweight","Heavyweight","Champions"]
+  const weight_classes = ["Featherweight","Lightweight","Welterweight","Middleweight","Light heavyweight","Cruiserweight","Heavyweight","Champions"]
   
   const forward = useRef<HTMLDivElement>(null);
   const anchor = useRef<HTMLDivElement>(null);
-  const [arrow_vis, setArrowVis] = useState(false);
   const [traX, setX] = useState<number>(0);
   const [distance, setDistance] = useState<number>(0);
 
@@ -28,17 +27,13 @@ const Homie = () => {
         console.log(traX,"0 dan büyük değil")
         setX(traX + widthChange)
       }
-
       setWidthChange(widthChange);
-
-      // Update previous size with the current size
       previousWidth = currentWidth;
     }
 
     let previousWidth = window.innerWidth;
 
     window.addEventListener('resize', handleResize);
-
     return () => {
       window.removeEventListener('resize', handleResize);
     };
@@ -47,32 +42,23 @@ const Homie = () => {
 
   useEffect(()=>{
     if(forward.current && anchor.current){
-      setDistance(forward.current.offsetLeft - anchor.current.offsetLeft - 15)
+      setDistance(forward.current.offsetLeft - anchor.current.offsetLeft)
     }
-    
-    window.addEventListener("resize", ()=>{
+
+    const distance_handler = () =>{
       if(forward.current && anchor.current){
         setDistance(forward.current.offsetLeft - anchor.current.offsetLeft)
-        if(forward.current.offsetLeft - anchor.current.offsetLeft < 100){
-          setArrowVis(true)
-        }
-        else{
-          setArrowVis(false)
-        }
       }
-    })
+    }
+    
+    window.addEventListener("resize", distance_handler)
+    return () => {
+      window.removeEventListener('resize', distance_handler);
+    };
   },[traX])
   
   const handle_forward = () =>{
-    if(distance-traX < 100){
-      setArrowVis(true)
-    }
-    else{
-      setArrowVis(false)
-    }
-    if(arrow_vis){
       setX(traX-50)
-    }
   }
 
   return ( 
@@ -95,7 +81,7 @@ const Homie = () => {
             <div ref={anchor}>.</div>
         </div>
         <div id={h.name} ref={forward}>
-          <button onClick={handle_forward} id={h.forward} style={{visibility: arrow_vis ? "visible" : "hidden"}}>X</button>
+          <button onClick={handle_forward} id={h.forward} style={{display: distance-traX < 100 ? "block" : "none"}}>X</button>
           <div id={h.double}>
             <div>My</div>
             <div><Image alt={"play"} src={video}/></div>
