@@ -28,7 +28,9 @@ const Homie = () => {
         if(traX !== 0 && traX < 0){
           setX(traX + widthChange)
         }
-        
+        else{
+          setX(0)
+        }
       }
       previousWidth = currentWidth;
     }
