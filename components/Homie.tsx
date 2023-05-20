@@ -23,11 +23,13 @@ const Homie = () => {
 
       const widthChange = currentWidth - previousWidth;
 
-      if(traX < 0){
-        console.log(traX,"0 dan büyük değil")
-        setX(traX + widthChange)
+      if(currentWidth > previousWidth){
+        console.log(traX,"enlarging")
+        if(traX !== 0 && traX < 0){
+          setX(traX + widthChange)
+        }
+        
       }
-      setWidthChange(widthChange);
       previousWidth = currentWidth;
     }
 
@@ -55,7 +57,7 @@ const Homie = () => {
     return () => {
       window.removeEventListener('resize', distance_handler);
     };
-  },[traX])
+  },[])
   
   const handle_forward = () =>{
       setX(traX-50)
