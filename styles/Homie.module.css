@@ -56,11 +56,23 @@
   align-items: center;
   justify-content: center;
   background-color: white;
+  font-size: xx-large;
+  transform: rotate(180deg);
+  border-radius: 50%;
+  min-width: 40px;
+  height: 40px;
+}
+.homie_topBanner #back img {
+  width: 25px;
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .homie_topBanner_menu {
   display: flex;
   -moz-column-gap: 1vw;
        column-gap: 1vw;
+  padding-left: 1vw;
 }
 .homie_topBanner_menu_double {
   background-color: rgb(241, 239, 239);
@@ -91,15 +103,19 @@
   color: crimson;
 }
 .homie_topBanner #name #forward {
-  font-size: large;
   position: relative;
   right: 20px;
-  height: 100%;
-  width: 40px;
-  display: grid;
-  align-items: center;
-  justify-content: center;
   background-color: white;
+  padding-top: 5px;
+  border-radius: 50%;
+  min-width: 40px;
+  height: 40px;
+}
+.homie_topBanner #name #forward img {
+  width: 25px;
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .homie_topBanner #name #double {
   letter-spacing: 0;

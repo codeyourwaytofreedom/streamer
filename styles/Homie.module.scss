@@ -52,10 +52,20 @@ $main-gold: rgb(255, 215, 0);
             align-items: center;
             justify-content: center;
             background-color: white;
+            font-size: xx-large;
+            transform: rotate(180deg);
+            border-radius: 50%;
+            min-width: 40px; height: 40px;
+            img{
+                width: 25px;
+                height: auto;
+                object-fit: contain;
+            }
         }
         &_menu{
             display: flex;
             column-gap: 1vw;
+            padding-left: 1vw;
             &_double{
                 background-color: rgb(241, 239, 239);
                 display: flex;
@@ -84,16 +94,17 @@ $main-gold: rgb(255, 215, 0);
             font-weight: 300;
             color: crimson;
             #forward{
-                font-size: large;
                 position: relative;
                 right: 20px;
-                //border: 2px solid red;
-                height: 100%;
-                width: 40px;
-                display: grid;
-                align-items: center;
-                justify-content: center;
                 background-color: white;
+                padding-top: 5px;
+                border-radius: 50%;
+                min-width: 40px; height: 40px;
+                img{
+                    width: 25px;
+                    height: auto;
+                    object-fit: contain;
+                }
             }
             #double{
                 letter-spacing: 0;

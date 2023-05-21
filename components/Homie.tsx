@@ -6,6 +6,8 @@ import video from "../public/video.png";
 import puncher from "../public/puncher.svg";
 import Image from "next/image";
 import Fights_row from "./Fights";
+import right from "../public/right.png";
+import left from "../public/right.png";
 
 const Homie = () => {
   const weight_classes = ["Featherweight","Lightweight","Welterweight","Middleweight","Light heavyweight","Cruiserweight","Heavyweight","Champions"]
@@ -82,7 +84,9 @@ const Homie = () => {
           <div><Image alt={"puncher"} src={puncher}/></div>
           <div><Image alt={"punch"} src={punch}/></div>
         </div>
-        <button id={h.back} onClick={handle_backward} style={{display: traX < 0 ? "grid" : "none"}}>X</button>
+        <button id={h.back} onClick={handle_backward} style={{display: traX < 0 ? "grid" : "none"}}>
+          <Image src={right} alt={"right"} width={30} height={30}/>
+        </button>
         <div className={h.homie_topBanner_menu} style={{ transform: `translateX(${traX}px)` }}>
             {
               weight_classes.map((c,i )=>
@@ -94,7 +98,9 @@ const Homie = () => {
             <div ref={anchor}>.</div>
         </div>
         <div id={h.name} ref={forward}>
-          <button onClick={handle_forward} id={h.forward} style={{display: distance-traX < 100 ? "block" : "none"}}>X</button>
+          <button onClick={handle_forward} id={h.forward} style={{display: distance-traX < 100 ? "block" : "none"}}>
+            <Image src={right} alt={"right"}/>
+        </button>
           <div id={h.double}>
             <div>My</div>
             <div><Image alt={"play"} src={video}/></div>
