@@ -64,6 +64,14 @@ const Homie = () => {
   const handle_forward = () =>{
       setX(traX-50)
   }
+  const handle_backward = () =>{
+    if(traX + 50 > 0){
+      setX(0)
+    }
+    else{
+      setX(traX+50)
+    }
+}
 
   return ( 
   <div className={h.homie}>
@@ -74,6 +82,7 @@ const Homie = () => {
           <div><Image alt={"puncher"} src={puncher}/></div>
           <div><Image alt={"punch"} src={punch}/></div>
         </div>
+        <button id={h.back} onClick={handle_backward} style={{display: traX < 0 ? "grid" : "none"}}>X</button>
         <div className={h.homie_topBanner_menu} style={{ transform: `translateX(${traX}px)` }}>
             {
               weight_classes.map((c,i )=>

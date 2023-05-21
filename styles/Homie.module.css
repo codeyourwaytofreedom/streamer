@@ -47,8 +47,17 @@
 .homie_topBanner .grid :nth-child(3) {
   border-right: 2px solid black;
 }
+.homie_topBanner #back {
+  position: relative;
+  z-index: 9 !important;
+  height: 80px;
+  min-width: 40px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
 .homie_topBanner_menu {
-  padding-left: 2vw;
   display: flex;
   -moz-column-gap: 1vw;
        column-gap: 1vw;
@@ -85,9 +94,8 @@
   font-size: large;
   position: relative;
   right: 20px;
-  border: 2px solid red;
   height: 100%;
-  width: 30px;
+  width: 40px;
   display: grid;
   align-items: center;
   justify-content: center;

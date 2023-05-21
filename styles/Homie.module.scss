@@ -43,8 +43,17 @@ $main-gold: rgb(255, 215, 0);
                 border-right: 2px solid black;
             }
         }
+        #back{
+            position: relative;
+            z-index: 9 !important;
+            height: 80px;
+            min-width: 40px;
+            display: grid;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+        }
         &_menu{
-            padding-left: 2vw;
             display: flex;
             column-gap: 1vw;
             &_double{
@@ -78,9 +87,9 @@ $main-gold: rgb(255, 215, 0);
                 font-size: large;
                 position: relative;
                 right: 20px;
-                border: 2px solid red;
+                //border: 2px solid red;
                 height: 100%;
-                width: 30px;
+                width: 40px;
                 display: grid;
                 align-items: center;
                 justify-content: center;
