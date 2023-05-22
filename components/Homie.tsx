@@ -84,21 +84,24 @@ const Homie = () => {
           <div><Image alt={"puncher"} src={puncher}/></div>
           <div><Image alt={"punch"} src={punch}/></div>
         </div>
-        <button id={h.back} onClick={handle_backward} style={{display: traX < 0 ? "grid" : "none"}}>
-          <Image src={right} alt={"right"} width={30} height={30}/>
+       
+        <button id={h.back} onClick={handle_backward} style={{display: traX < 0 ? "grid" : "none"}}> 
+          <Image src={right} alt={"right"}/>
         </button>
+        <div id={h.backshadow} style={{display: traX < 0 ? "grid" : "none"}}></div>
         <div className={h.homie_topBanner_menu} style={{ transform: `translateX(${traX}px)` }}>
             {
               weight_classes.map((c,i )=>
             <button className={h.homie_topBanner_menu_double} key={i}>
-             <span>{c}</span>
+             {c}
             </button>
             )
             }
-            <div ref={anchor}>.</div>
+            <div ref={anchor}></div>
         </div>
         <div id={h.name} ref={forward}>
           <button onClick={handle_forward} id={h.forward} style={{display: distance-traX < 100 ? "block" : "none"}}>
+            <div id={h.shadow}></div>
             <Image src={right} alt={"right"}/>
         </button>
           <div id={h.double}>
@@ -108,7 +111,7 @@ const Homie = () => {
             Tube
         </div>
       </div>
-      <h1>Distance: {distance} - Tra_X: {traX} - Difference: {distance-traX} Width-Change: {widthChange}</h1>
+     {/*  <h1>Distance: {distance} - Tra_X: {traX} - Difference: {distance-traX} Width-Change: {widthChange}</h1> */}
       <Fights_row/>
   </div>
   )
