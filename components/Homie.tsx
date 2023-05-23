@@ -60,7 +60,7 @@ const Homie = () => {
     return () => {
       window.removeEventListener('resize', distance_handler);
     };
-  },[])
+  },[traX])
   
   const handle_forward = () =>{
       setX(traX-50)
