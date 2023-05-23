@@ -1,21 +1,16 @@
 import h from "../styles/Homie.module.css";
-import { MouseEvent } from 'react';
 import { useEffect, useRef, useState } from "react";
-import punch from "../public/punch.svg";
 import video from "../public/video.png";
-import puncher from "../public/puncher.svg";
 import Image from "next/image";
-import Fights_row from "./Fights";
 import right from "../public/right.png";
 
-const Homie = () => {
+const Slider_tester = () => {
   const weight_classes = ["Featherweight","Lightweight","Welterweight","Middleweight","Light heavyweight","Cruiserweight","Heavyweight","Champions", "Knock-outs","Legends","Title fights"]
   
   const forward = useRef<HTMLDivElement>(null);
   const anchor = useRef<HTMLDivElement>(null);
   const [traX, setX] = useState<number>(0);
   const [distance, setDistance] = useState<number>(0);
-  const[rightVis, setRightVis] = useState(true)
 
 
   useEffect(() => {
@@ -95,17 +90,9 @@ const Homie = () => {
   return ( 
   <div className={h.homie}>
       <div className={h.homie_topBanner}>
-        <div className={h.grid}>
-          <div><Image alt={"punch"} src={punch}/></div>
-          <div> <Image alt={"puncher"} src={puncher}/></div>
-          <div><Image alt={"puncher"} src={puncher}/></div>
-          <div><Image alt={"punch"} src={punch}/></div>
-        </div>
-       
         <button id={h.back} onClick={handle_backward} style={{display: traX < 0 ? "grid" : "none"}}> 
           <Image src={right} alt={"right"}/>
         </button>
-        <div id={h.backshadow} style={{display: traX < 0 ? "grid" : "none"}}></div>
         <div className={h.homie_topBanner_menu} style={{ transform: `translateX(${traX}px)` }}>
             {
               weight_classes.map((c,i )=>
@@ -129,10 +116,9 @@ const Homie = () => {
         </div>
       </div>
         <h1>Distance: {distance} - Tra_X: {traX} - Difference: {distance-traX}</h1>
-      <Fights_row/>
   </div>
   )
   
 }
 
-export default Homie;
+export default Slider_tester;

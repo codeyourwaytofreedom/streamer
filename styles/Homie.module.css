@@ -79,6 +79,7 @@
   -moz-column-gap: 1vw;
        column-gap: 1vw;
   padding-left: 1vw;
+  position: relative;
 }
 .homie_topBanner_menu_double {
   background-color: rgb(244, 240, 240);
@@ -95,7 +96,7 @@
 .homie_topBanner #name {
   height: 60px;
   position: fixed;
-  right: 1vw;
+  right: 0;
   padding-right: 4vw;
   display: flex;
   justify-content: center;
