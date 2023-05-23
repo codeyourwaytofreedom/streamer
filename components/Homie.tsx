@@ -10,14 +10,13 @@ import right from "../public/right.png";
 import left from "../public/right.png";
 
 const Homie = () => {
-  const weight_classes = ["Featherweight","Lightweight","Welterweight","Middleweight","Light heavyweight","Cruiserweight","Heavyweight","Champions"]
+  const weight_classes = ["Featherweight","Lightweight","Welterweight","Middleweight","Light heavyweight","Cruiserweight","Heavyweight","Champions", "Knock-outs","Legends","Title fights"]
   
   const forward = useRef<HTMLDivElement>(null);
   const anchor = useRef<HTMLDivElement>(null);
   const [traX, setX] = useState<number>(0);
   const [distance, setDistance] = useState<number>(0);
 
-  const [widthChange, setWidthChange] = useState(0);
 
   useEffect(() => {
     const handleResize = () => {
@@ -103,7 +102,7 @@ const Homie = () => {
           <button onClick={handle_forward} id={h.forward} style={{display: distance-traX < 100 ? "block" : "none"}}>
             <div id={h.shadow}></div>
             <Image src={right} alt={"right"}/>
-        </button>
+          </button>
           <div id={h.double}>
             <div>My</div>
             <div><Image alt={"play"} src={video}/></div>

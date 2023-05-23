@@ -11,7 +11,7 @@ $main-gold: rgb(255, 215, 0);
         display: flex;
         align-items: center;
         left: 2vw; width: 94vw;
-        border-bottom:1px solid silver;
+        border-bottom:1px solid rgb(238, 237, 237);
         overflow: hidden;
         .grid{
             display: grid;
@@ -31,17 +31,6 @@ $main-gold: rgb(255, 215, 0);
                 height: 35px;
                 padding: 3px;
                 animation: oval_minus 4s infinite;
-            }
-            :nth-child(1){
-                border-right: 2px solid black;
-                border-bottom: 2px solid black;
-            }
-            :nth-child(2){
-                border-bottom: 2px solid black;
-
-            }
-            :nth-child(3){
-                border-right: 2px solid black;
             }
         }
         #backshadow{
@@ -75,6 +64,7 @@ $main-gold: rgb(255, 215, 0);
                 width: 20px;
                 height: auto;
                 object-fit: contain;
+                opacity: 0.6;
             }
         }
         &_menu{
@@ -94,11 +84,10 @@ $main-gold: rgb(255, 215, 0);
             }
         }
         #name{
-            height: 80px;
+            height: 60px;
             position: fixed;
             right: 1vw;
             padding-right: 4vw;
-            width: 200px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -121,6 +110,7 @@ $main-gold: rgb(255, 215, 0);
                     width: 20px;
                     height: auto;
                     object-fit: contain;
+                    opacity: 0.6;
                 }
                 #shadow{
                     position: absolute;
@@ -206,7 +196,6 @@ $main-gold: rgb(255, 215, 0);
 @media (max-width: 991.98px) { 
     .homie{
         &_topBanner{
-            border-bottom:1px solid blue;
         }
         &_fights{
             grid-template-columns: 1fr 1fr;
@@ -221,7 +210,23 @@ $main-gold: rgb(255, 215, 0);
 @media (max-width: 767.98px) { 
     .homie{
         &_topBanner{
-            border-bottom:1px solid red;
+            height: 80px;
+            padding-top: 0;
+            .grid{
+                display: none;
+            }
+            #backshadow{
+                left: 0;
+            }
+            #name{
+                font-size: 50px;
+                #double{
+                    font-size: 21px;
+                }
+                #forward{
+                    right: 10px;
+                }
+            }
         }
         &_fights{
             grid-template-columns: 1fr;
@@ -235,9 +240,6 @@ $main-gold: rgb(255, 215, 0);
 
 @media (max-width: 575.98px) { 
     .homie{
-        &_topBanner{
-            border-bottom:1px solid green;
-        }
         &_fights{
             padding-left: 80px;
             &_each{

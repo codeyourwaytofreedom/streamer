@@ -11,7 +11,7 @@
   align-items: center;
   left: 2vw;
   width: 94vw;
-  border-bottom: 1px solid silver;
+  border-bottom: 1px solid rgb(238, 237, 237);
   overflow: hidden;
 }
 .homie_topBanner .grid {
@@ -37,16 +37,6 @@
   padding: 3px;
   -webkit-animation: oval_minus 4s infinite;
           animation: oval_minus 4s infinite;
-}
-.homie_topBanner .grid :nth-child(1) {
-  border-right: 2px solid black;
-  border-bottom: 2px solid black;
-}
-.homie_topBanner .grid :nth-child(2) {
-  border-bottom: 2px solid black;
-}
-.homie_topBanner .grid :nth-child(3) {
-  border-right: 2px solid black;
 }
 .homie_topBanner #backshadow {
   position: absolute;
@@ -82,6 +72,7 @@
   height: auto;
   -o-object-fit: contain;
      object-fit: contain;
+  opacity: 0.6;
 }
 .homie_topBanner_menu {
   display: flex;
@@ -102,11 +93,10 @@
   font-size: medium;
 }
 .homie_topBanner #name {
-  height: 80px;
+  height: 60px;
   position: fixed;
   right: 1vw;
   padding-right: 4vw;
-  width: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -133,6 +123,7 @@
   height: auto;
   -o-object-fit: contain;
      object-fit: contain;
+  opacity: 0.6;
 }
 .homie_topBanner #name #forward #shadow {
   position: absolute;
@@ -207,16 +198,29 @@
 }
 
 @media (max-width: 991.98px) {
-  .homie_topBanner {
-    border-bottom: 1px solid blue;
-  }
   .homie_fights {
     grid-template-columns: 1fr 1fr;
   }
 }
 @media (max-width: 767.98px) {
   .homie_topBanner {
-    border-bottom: 1px solid red;
+    height: 80px;
+    padding-top: 0;
+  }
+  .homie_topBanner .grid {
+    display: none;
+  }
+  .homie_topBanner #backshadow {
+    left: 0;
+  }
+  .homie_topBanner #name {
+    font-size: 50px;
+  }
+  .homie_topBanner #name #double {
+    font-size: 21px;
+  }
+  .homie_topBanner #name #forward {
+    right: 10px;
   }
   .homie_fights {
     grid-template-columns: 1fr;
@@ -226,9 +230,6 @@
   }
 }
 @media (max-width: 575.98px) {
-  .homie_topBanner {
-    border-bottom: 1px solid green;
-  }
   .homie_fights {
     padding-left: 80px;
   }
