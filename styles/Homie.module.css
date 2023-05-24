@@ -1,6 +1,6 @@
 .homie {
   position: relative;
-  padding-top: 90px;
+  padding-top: 170px;
 }
 .homie_topBanner {
   background-color: white;
@@ -48,51 +48,6 @@
   z-index: 1 !important;
   box-shadow: 16px 0px 11px 13px white;
 }
-.homie_topBanner #back {
-  position: relative;
-  z-index: 9 !important;
-  height: 80px;
-  min-width: 40px;
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  font-size: xx-large;
-  transform: rotate(180deg);
-  border-radius: 50%;
-  min-width: 40px;
-  height: 40px;
-  border: none;
-}
-.homie_topBanner #back:hover {
-  background-color: rgb(166, 220, 242);
-}
-.homie_topBanner #back img {
-  width: 20px;
-  height: auto;
-  -o-object-fit: contain;
-     object-fit: contain;
-  opacity: 0.6;
-}
-.homie_topBanner_menu {
-  display: flex;
-  -moz-column-gap: 1vw;
-       column-gap: 1vw;
-  padding-left: 1vw;
-  position: relative;
-}
-.homie_topBanner_menu_double {
-  background-color: rgb(244, 240, 240);
-  display: flex;
-  -moz-column-gap: 5px;
-       column-gap: 5px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  white-space: nowrap;
-  font-weight: 300;
-  border: none;
-  font-size: medium;
-}
 .homie_topBanner #name {
   height: 60px;
   position: fixed;
@@ -106,34 +61,6 @@
   letter-spacing: -4px;
   font-weight: 300;
   color: crimson;
-}
-.homie_topBanner #name #forward {
-  position: relative;
-  right: 20px;
-  background-color: white;
-  border-radius: 50%;
-  min-width: 40px;
-  height: 40px;
-  border: none;
-}
-.homie_topBanner #name #forward:hover {
-  background-color: rgb(166, 220, 242);
-}
-.homie_topBanner #name #forward img {
-  width: 20px;
-  height: auto;
-  -o-object-fit: contain;
-     object-fit: contain;
-  opacity: 0.6;
-}
-.homie_topBanner #name #forward #shadow {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 20px;
-  background-color: white;
-  z-index: -1 !important;
-  box-shadow: -4px 0px 11px 13px white;
 }
 .homie_topBanner #name #double {
   letter-spacing: 0;
@@ -207,12 +134,6 @@
   .homie_topBanner {
     height: 80px;
     padding-top: 0;
-  }
-  .homie_topBanner .grid {
-    display: none;
-  }
-  .homie_topBanner #backshadow {
-    left: 0;
   }
   .homie_topBanner #name {
     font-size: 50px;

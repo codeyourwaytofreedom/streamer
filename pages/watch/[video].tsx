@@ -6,6 +6,7 @@ import punchtwo from "../../public/punchtwo.svg";
 import puncher from "../../public/puncher.svg";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import Slider_menu from "../../components/Slider";
 
 const Watch = () => {
   const router = useRouter();

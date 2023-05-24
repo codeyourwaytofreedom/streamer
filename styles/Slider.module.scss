@@ -1,8 +1,35 @@
 $main-gold: rgb(255, 215, 0);
 
 .slider{
-    position: relative;
-    top:100px;
+    position: fixed;
+    height: 100px;
+    top:80px;
+    #back{
+        position: relative;
+        top:25px;
+        left: 10px;
+        z-index: 90 !important;
+        height: 80px;
+        min-width: 40px;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        font-size: xx-large;
+        transform: rotate(180deg);
+        border-radius: 50%;
+        min-width: 40px; height: 40px;
+        border: none;
+        &:hover{
+            background-color: rgb(166, 220, 242);
+        }
+        img{
+            width: 20px;
+            height: auto;
+            object-fit: contain;
+            opacity: 0.6;
+        }
+    }
     &_topBanner{
         background-color: white;
         top: 0;
@@ -12,42 +39,18 @@ $main-gold: rgb(255, 215, 0);
         border-bottom:1px solid rgb(238, 237, 237);
         height: 80px;
         overflow: hidden;
-        width: calc(100vw - 40px);
-        position: relative;
-        left: 20px;
+        position: absolute;
+        z-index: 1 !important;
+        padding-left: 10px;
         #backshadow{
             position: absolute;
             top:0;
-            left: 80px;
+            left: -20px;
             height: 100%;
-            width: 20px;
+            width: 50px;
             background-color: white;
             z-index: 1 !important;
             box-shadow: 16px 0px 11px 13px white;
-        }
-        #back{
-            position: relative;
-            z-index: 9 !important;
-            height: 80px;
-            min-width: 40px;
-            display: grid;
-            align-items: center;
-            justify-content: center;
-            background-color: white;
-            font-size: xx-large;
-            transform: rotate(180deg);
-            border-radius: 50%;
-            min-width: 40px; height: 40px;
-            border: none;
-            &:hover{
-                background-color: rgb(166, 220, 242);
-            }
-            img{
-                width: 20px;
-                height: auto;
-                object-fit: contain;
-                opacity: 0.6;
-            }
         }
         &_menu{
             display: flex;
@@ -67,7 +70,7 @@ $main-gold: rgb(255, 215, 0);
         }
         #name{
             position: fixed;
-            right: 20px;
+            right: 10px;
             #forward{
                 position: relative;
                 background-color: white;
@@ -84,8 +87,15 @@ $main-gold: rgb(255, 215, 0);
                     opacity: 0.6;
                 }
             }
+            #shadow{
+                position: absolute;
+                top:0;
+                height: 100%;
+                width: 50px;
+                background-color: white;
+                z-index: -1 !important;
+                box-shadow: -4px 0px 20px 13px rgb(255, 255, 255);
+            }
         }
     }
-
-
 }

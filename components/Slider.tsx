@@ -1,10 +1,9 @@
 import h from "../styles/Slider.module.css";
 import { useEffect, useRef, useState } from "react";
-import video from "../public/video.png";
 import Image from "next/image";
 import right from "../public/right.png";
 
-const Slider_tester = () => {
+const Slider_menu = () => {
   const weight_classes = ["Featherweight","Lightweight","Welterweight","Middleweight","Light heavyweight","Featherweight","Lightweight","Welterweight","Middleweight","Light heavyweight","Cruiserweight","Heavyweight","Champions", "Knock-outs","Legends","Title fights"]
   
   const forward = useRef<HTMLDivElement>(null);
@@ -106,7 +105,7 @@ const Slider_tester = () => {
           <Image src={right} alt={"right"}/>
         </button>
       <div className={h.slider_topBanner}>
-      <div id={h.backshadow} style={{visibility: traX < 0 ? "visible" : "hidden"}} ></div>
+      <div id={h.backshadow} style={{visibility: traX < 0 ? "visible" : "hidden"}}></div>
         <div className={h.slider_topBanner_menu} style={{ transform: `translateX(${traX}px)` }}>
             {
               weight_classes.map((c,i )=>
@@ -124,17 +123,9 @@ const Slider_tester = () => {
           </button>
         </div>
       </div>
-{/*         <h1>Arrow point: {forward.current?.getBoundingClientRect().left}</h1>
-        <h1>Anchor point: {anchor.current?.getBoundingClientRect().left}</h1> */}
-        <br />
-        <br />
-        <br /><br />
-        <h1>{forVis ? "true" : "false"}</h1>
-        <h1>{traX}</h1>
-        <h2>{forward.current && anchor.current && forward.current.getBoundingClientRect().left -  anchor.current!.getBoundingClientRect().left}</h2>
   </div>
   )
   
 }
 
-export default Slider_tester;
+export default Slider_menu;

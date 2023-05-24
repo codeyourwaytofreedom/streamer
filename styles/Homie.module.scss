@@ -2,7 +2,7 @@ $main-gold: rgb(255, 215, 0);
 
 .homie{
     position: relative;
-    padding-top: 90px;
+    padding-top: 170px;
     &_topBanner{
         background-color: white;
         position: fixed;
@@ -43,47 +43,6 @@ $main-gold: rgb(255, 215, 0);
             z-index: 1 !important;
             box-shadow: 16px 0px 11px 13px white;
         }
-        #back{
-            position: relative;
-            z-index: 9 !important;
-            height: 80px;
-            min-width: 40px;
-            display: grid;
-            align-items: center;
-            justify-content: center;
-            background-color: white;
-            font-size: xx-large;
-            transform: rotate(180deg);
-            border-radius: 50%;
-            min-width: 40px; height: 40px;
-            border: none;
-            &:hover{
-                background-color: rgb(166, 220, 242);
-            }
-            img{
-                width: 20px;
-                height: auto;
-                object-fit: contain;
-                opacity: 0.6;
-            }
-        }
-        &_menu{
-            display: flex;
-            column-gap: 1vw;
-            padding-left: 1vw;
-            position: relative;
-            &_double{
-                background-color: rgb(244, 240, 240);
-                display: flex;
-                column-gap:5px;
-                padding: 5px 10px;
-                border-radius: 5px;
-                white-space: nowrap;
-                font-weight: 300;
-                border: none;
-                font-size: medium;
-            }
-        }
         #name{
             height: 60px;
             position: fixed;
@@ -97,32 +56,6 @@ $main-gold: rgb(255, 215, 0);
             letter-spacing: -4px;
             font-weight: 300;
             color: crimson;
-            #forward{
-                position: relative;
-                right: 20px;
-                background-color: white;
-                border-radius: 50%;
-                min-width: 40px; height: 40px;
-                border: none;
-                &:hover{
-                    background-color: rgb(166, 220, 242);
-                }
-                img{
-                    width: 20px;
-                    height: auto;
-                    object-fit: contain;
-                    opacity: 0.6;
-                }
-                #shadow{
-                    position: absolute;
-                    top:0;
-                    height: 100%;
-                    width: 20px;
-                    background-color: white;
-                    z-index: -1 !important;
-                    box-shadow: -4px 0px 11px 13px white;
-                }
-            }
             #double{
                 letter-spacing: 0;
                 font-size: 25px;
@@ -213,12 +146,6 @@ $main-gold: rgb(255, 215, 0);
         &_topBanner{
             height: 80px;
             padding-top: 0;
-            .grid{
-                display: none;
-            }
-            #backshadow{
-                left: 0;
-            }
             #name{
                 font-size: 50px;
                 #double{
