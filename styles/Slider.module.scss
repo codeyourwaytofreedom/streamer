@@ -2,6 +2,7 @@ $main-gold: rgb(255, 215, 0);
 
 .slider{
     position: relative;
+    top:100px;
     &_topBanner{
         background-color: white;
         top: 0;
@@ -11,7 +12,9 @@ $main-gold: rgb(255, 215, 0);
         border-bottom:1px solid rgb(238, 237, 237);
         height: 80px;
         overflow: hidden;
-        padding-left: 2vw;
+        width: calc(100vw - 40px);
+        position: relative;
+        left: 20px;
         #backshadow{
             position: absolute;
             top:0;
@@ -64,7 +67,7 @@ $main-gold: rgb(255, 215, 0);
         }
         #name{
             position: fixed;
-            right: 2vw;
+            right: 20px;
             #forward{
                 position: relative;
                 background-color: white;

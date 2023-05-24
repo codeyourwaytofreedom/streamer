@@ -1,5 +1,6 @@
 .slider {
   position: relative;
+  top: 100px;
 }
 .slider_topBanner {
   background-color: white;
@@ -10,7 +11,9 @@
   border-bottom: 1px solid rgb(238, 237, 237);
   height: 80px;
   overflow: hidden;
-  padding-left: 2vw;
+  width: calc(100vw - 40px);
+  position: relative;
+  left: 20px;
 }
 .slider_topBanner #backshadow {
   position: absolute;
@@ -67,7 +70,7 @@
 }
 .slider_topBanner #name {
   position: fixed;
-  right: 2vw;
+  right: 20px;
 }
 .slider_topBanner #name #forward {
   position: relative;

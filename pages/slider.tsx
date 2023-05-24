@@ -5,12 +5,13 @@ import Image from "next/image";
 import right from "../public/right.png";
 
 const Slider_tester = () => {
-  const weight_classes = ["Featherweight","Lightweight","Welterweight","Middleweight","Featherweight","Lightweight","Welterweight","Middleweight","Light heavyweight","Cruiserweight","Heavyweight","Champions", "Knock-outs","Legends","Title fights"]
+  const weight_classes = ["Featherweight","Lightweight","Welterweight","Middleweight","Light heavyweight","Featherweight","Lightweight","Welterweight","Middleweight","Light heavyweight","Cruiserweight","Heavyweight","Champions", "Knock-outs","Legends","Title fights"]
   
   const forward = useRef<HTMLDivElement>(null);
   const anchor = useRef<HTMLDivElement>(null);
   const [traX, setX] = useState<number>(0);
   const [distance, setDistance] = useState<number>(0);
+  const [forVis, setForVis] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -19,7 +20,6 @@ const Slider_tester = () => {
       const widthChange = currentWidth - previousWidth;
 
       if(currentWidth > previousWidth){
-        console.log(traX,"enlarging")
         if(traX !== 0 && traX < 0){
           setX(traX + widthChange)
         }
@@ -66,7 +66,7 @@ const Slider_tester = () => {
       setX(traX-50);
       setTimeout(() => {
         setDistance(distance+50)
-      }, 10);
+      }, 100);
   }
 
   const handle_backward = () =>{
@@ -75,11 +75,30 @@ const Slider_tester = () => {
     }
     else{
       setX(traX+50)
-      setTimeout(() => {
-        setDistance(distance-50)
-      }, 10);
     }
-}
+  }
+
+  useEffect(()=>{
+    if(anchor.current && forward.current){
+      if(anchor.current?.getBoundingClientRect().left > forward.current?.getBoundingClientRect().left){
+        setForVis(true)
+      }
+      else{
+        setForVis(false)
+      }
+    }
+  },[anchor.current?.getBoundingClientRect().left, forward.current?.getBoundingClientRect().left]);
+
+  useEffect(()=>{
+    console.log("vis changed");
+    if(anchor.current && forward.current){
+      const margin = forward.current.getBoundingClientRect().left -  anchor.current!.getBoundingClientRect().left;
+        console.log(margin);
+        if(margin > 0){
+          setX(traX + (margin))
+        }
+    }
+  },[forVis])
 
   return ( 
   <div className={h.slider}>
@@ -95,15 +114,18 @@ const Slider_tester = () => {
             </button>
             )
             }
-            <div ref={anchor}>x</div>
+            <div ref={anchor}></div>
         </div>
-        <div id={h.name} ref={forward} style={{visibility:distance < -5 ? "visible" : "hidden"}}>
+        <div id={h.name} ref={forward} style={{visibility:forVis ? "visible" : "hidden"}}>
           <button onClick={handle_forward} id={h.forward}>
             <Image src={right} alt={"right"}/>
           </button>
         </div>
       </div>
-        <h1>Distance: {distance} - Tra_X: {traX} - Difference: {distance-traX}</h1>
+{/*         <h1>Arrow point: {forward.current?.getBoundingClientRect().left}</h1>
+        <h1>Anchor point: {anchor.current?.getBoundingClientRect().left}</h1> */}
+        <h1>{forVis ? "true" : "false"}</h1>
+        <h2>{forward.current && anchor.current && forward.current.getBoundingClientRect().left -  anchor.current!.getBoundingClientRect().left}</h2>
   </div>
   )
   
