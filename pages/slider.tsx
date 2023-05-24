@@ -39,7 +39,7 @@ const Slider_tester = () => {
   }, [traX]);
 
 
-  useEffect(() => {
+/*   useEffect(() => {
     const calculateDistance = () => {
       if (forward.current && anchor.current) {
         const forwardRect = forward.current.getBoundingClientRect();
@@ -49,7 +49,7 @@ const Slider_tester = () => {
       }
     };
 
-    calculateDistance(); // Initial calculation
+    calculateDistance();
 
     const resizeHandler = () => {
       calculateDistance();
@@ -60,7 +60,7 @@ const Slider_tester = () => {
     return () => {
       window.removeEventListener('resize', resizeHandler);
     };
-  }, []);
+  }, []); */
   
   const handle_forward = () =>{
       setX(traX-50);
@@ -95,7 +95,7 @@ const Slider_tester = () => {
       const margin = forward.current.getBoundingClientRect().left -  anchor.current!.getBoundingClientRect().left;
         console.log(margin);
         if(margin > 0){
-          setX(traX + (margin))
+          setX(traX + (margin+20))
         }
     }
   },[forVis])
