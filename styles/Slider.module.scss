@@ -1,0 +1,88 @@
+$main-gold: rgb(255, 215, 0);
+
+.slider{
+    position: relative;
+    &_topBanner{
+        background-color: white;
+        top: 0;
+        padding-top: 10px;
+        display: flex;
+        align-items: center;
+        border-bottom:1px solid rgb(238, 237, 237);
+        height: 80px;
+        overflow: hidden;
+        padding-left: 2vw;
+        #backshadow{
+            position: absolute;
+            top:0;
+            left: 80px;
+            height: 100%;
+            width: 20px;
+            background-color: white;
+            z-index: 1 !important;
+            box-shadow: 16px 0px 11px 13px white;
+        }
+        #back{
+            position: relative;
+            z-index: 9 !important;
+            height: 80px;
+            min-width: 40px;
+            display: grid;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            font-size: xx-large;
+            transform: rotate(180deg);
+            border-radius: 50%;
+            min-width: 40px; height: 40px;
+            border: none;
+            &:hover{
+                background-color: rgb(166, 220, 242);
+            }
+            img{
+                width: 20px;
+                height: auto;
+                object-fit: contain;
+                opacity: 0.6;
+            }
+        }
+        &_menu{
+            display: flex;
+            column-gap: 10px;
+            position: relative;
+            white-space: nowrap !important;
+            &_double{
+                background-color: rgb(244, 240, 240);
+                display: flex;
+                padding: 5px 10px;
+                border-radius: 5px;
+                white-space: nowrap !important;
+                font-weight: 300;
+                border: none;
+                font-size: medium;
+            }
+        }
+        #name{
+            position: fixed;
+            right: 2vw;
+            #forward{
+                position: relative;
+                background-color: white;
+                border-radius: 50%;
+                min-width: 40px; height: 40px;
+                border: none;
+                &:hover{
+                    background-color: rgb(166, 220, 242);
+                }
+                img{
+                    width: 20px;
+                    height: auto;
+                    object-fit: contain;
+                    opacity: 0.6;
+                }
+            }
+        }
+    }
+
+
+}

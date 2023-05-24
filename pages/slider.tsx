@@ -1,17 +1,16 @@
-import h from "../styles/Homie.module.css";
+import h from "../styles/Slider.module.css";
 import { useEffect, useRef, useState } from "react";
 import video from "../public/video.png";
 import Image from "next/image";
 import right from "../public/right.png";
 
 const Slider_tester = () => {
-  const weight_classes = ["Featherweight","Lightweight","Welterweight","Middleweight","Light heavyweight","Cruiserweight","Heavyweight","Champions", "Knock-outs","Legends","Title fights"]
+  const weight_classes = ["Featherweight","Lightweight","Welterweight","Middleweight","Featherweight","Lightweight","Welterweight","Middleweight","Light heavyweight","Cruiserweight","Heavyweight","Champions", "Knock-outs","Legends","Title fights"]
   
   const forward = useRef<HTMLDivElement>(null);
   const anchor = useRef<HTMLDivElement>(null);
   const [traX, setX] = useState<number>(0);
   const [distance, setDistance] = useState<number>(0);
-
 
   useEffect(() => {
     const handleResize = () => {
@@ -40,42 +39,34 @@ const Slider_tester = () => {
   }, [traX]);
 
 
-  useEffect(()=>{
-    if(forward.current && anchor.current){
-      setDistance(forward.current.offsetLeft - anchor.current.offsetLeft)
-    }
-
-    const distance_handler = () =>{
-      if(forward.current && anchor.current){
-        setDistance(forward.current.offsetLeft - anchor.current.offsetLeft)
+  useEffect(() => {
+    const calculateDistance = () => {
+      if (forward.current && anchor.current) {
+        const forwardRect = forward.current.getBoundingClientRect();
+        const anchorRect = anchor.current.getBoundingClientRect();
+        const distanceX = forwardRect.left - anchorRect.left;
+        setDistance(distanceX);
       }
-    }
-    
-    window.addEventListener("resize", distance_handler)
-    return () => {
-      window.removeEventListener('resize', distance_handler);
     };
-  },[traX])
+
+    calculateDistance(); // Initial calculation
+
+    const resizeHandler = () => {
+      calculateDistance();
+    };
+
+    window.addEventListener('resize', resizeHandler);
+
+    return () => {
+      window.removeEventListener('resize', resizeHandler);
+    };
+  }, []);
   
   const handle_forward = () =>{
-    if(window.innerWidth < 800){
-      if(distance -  (traX-50) > 55){
-        setX(traX - (55-(distance-traX)))
-      }
-      else{
-        setX(traX-50);
-      }
-    }
-    else{
-      if(distance -  (traX-50) > 150){
-        setX(traX - (150-(distance-traX)))
-      }
-      else{
-        setX(traX-50)
-      }
-      
-    }
-      
+      setX(traX-50);
+      setTimeout(() => {
+        setDistance(distance+50)
+      }, 10);
   }
 
   const handle_backward = () =>{
@@ -84,35 +75,32 @@ const Slider_tester = () => {
     }
     else{
       setX(traX+50)
+      setTimeout(() => {
+        setDistance(distance-50)
+      }, 10);
     }
 }
 
   return ( 
-  <div className={h.homie}>
-      <div className={h.homie_topBanner}>
+  <div className={h.slider}>
+      <div className={h.slider_topBanner}>
         <button id={h.back} onClick={handle_backward} style={{display: traX < 0 ? "grid" : "none"}}> 
           <Image src={right} alt={"right"}/>
         </button>
-        <div className={h.homie_topBanner_menu} style={{ transform: `translateX(${traX}px)` }}>
+        <div className={h.slider_topBanner_menu} style={{ transform: `translateX(${traX}px)` }}>
             {
               weight_classes.map((c,i )=>
-            <button className={h.homie_topBanner_menu_double} key={i}>
+            <button className={h.slider_topBanner_menu_double} key={i}>
              {c}
             </button>
             )
             }
-            <div ref={anchor}></div>
+            <div ref={anchor}>x</div>
         </div>
-        <div id={h.name} ref={forward}>
-          <button onClick={handle_forward} id={h.forward} style={{display:distance-traX < 150 && distance-traX !== 55 ? "block" : "none"}}>
-            <div id={h.shadow}></div>
+        <div id={h.name} ref={forward} style={{visibility:distance < -5 ? "visible" : "hidden"}}>
+          <button onClick={handle_forward} id={h.forward}>
             <Image src={right} alt={"right"}/>
           </button>
-          <div id={h.double}>
-            <div>My</div>
-            <div><Image alt={"play"} src={video}/></div>
-          </div>
-            Tube
         </div>
       </div>
         <h1>Distance: {distance} - Tra_X: {traX} - Difference: {distance-traX}</h1>
