@@ -2,7 +2,7 @@ $main-gold: rgb(255, 215, 0);
 
 .slider{
     position: fixed;
-    height: 100px;
+    height: 70px;
     top:80px;
     #back{
         position: relative;
@@ -18,16 +18,15 @@ $main-gold: rgb(255, 215, 0);
         font-size: xx-large;
         transform: rotate(180deg);
         border-radius: 50%;
-        min-width: 40px; height: 40px;
+        min-width: 35px; height: 35px;
         border: none;
         &:hover{
-            background-color: rgb(166, 220, 242);
+            background-color: silver;
         }
         img{
-            width: 20px;
-            height: auto;
+            width: 15px;
+            height: 15px;
             object-fit: contain;
-            opacity: 0.6;
         }
     }
     &_topBanner{
@@ -45,12 +44,12 @@ $main-gold: rgb(255, 215, 0);
         #backshadow{
             position: absolute;
             top:0;
-            left: -20px;
+            left: -30px;
             height: 100%;
             width: 50px;
             background-color: white;
             z-index: 1 !important;
-            box-shadow: 16px 0px 11px 13px white;
+            box-shadow: 17px 0 31px 20px white;
         }
         &_menu{
             display: flex;
@@ -58,14 +57,14 @@ $main-gold: rgb(255, 215, 0);
             position: relative;
             white-space: nowrap !important;
             &_double{
-                background-color: rgb(244, 240, 240);
+                background-color: rgba(0, 0, 0, 0.05);
                 display: flex;
                 padding: 5px 10px;
                 border-radius: 5px;
                 white-space: nowrap !important;
                 font-weight: 300;
                 border: none;
-                font-size: medium;
+                font-size: 15px;
             }
         }
         #name{
@@ -75,26 +74,29 @@ $main-gold: rgb(255, 215, 0);
                 position: relative;
                 background-color: white;
                 border-radius: 50%;
-                min-width: 40px; height: 40px;
+                min-width: 35px; height: 35px;
+                display: grid;
+                justify-content: center;
+                align-items: center;
                 border: none;
                 &:hover{
-                    background-color: rgb(166, 220, 242);
+                    background-color: silver;
                 }
                 img{
-                    width: 20px;
-                    height: auto;
+                    width: 15px;
+                    height: 15px;
                     object-fit: contain;
-                    opacity: 0.6;
                 }
             }
             #shadow{
                 position: absolute;
                 top:0;
+                left: 10px;
                 height: 100%;
                 width: 50px;
                 background-color: white;
                 z-index: -1 !important;
-                box-shadow: -4px 0px 20px 13px rgb(255, 255, 255);
+                box-shadow: -4px 0 28px 21px white;
             }
         }
     }

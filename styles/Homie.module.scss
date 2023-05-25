@@ -13,6 +13,7 @@ $main-gold: rgb(255, 215, 0);
         left: 2vw; width: 94vw;
         border-bottom:1px solid rgb(238, 237, 237);
         overflow: hidden;
+        z-index: 9 !important;
         .grid{
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -90,21 +91,47 @@ $main-gold: rgb(255, 215, 0);
         }
     }
     &_fights{
-        margin-top: 15px;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        gap: 1vw;
         padding: 10px 2vw;
         padding-left: calc(80px + 4vw);
         justify-items: center;
         padding-right: 3vw;
+        gap: 20px;
         &_each{
-            img{
-                object-fit: cover;
-                width: 100%;
-                height: 100%;
-                border-radius: 15px;
+            //border: 2px solid maroon;
+            aspect-ratio: 1/0.7;
+            &_image{
+                height: 70%;
+                img{
+                    object-fit: cover;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 15px;
+                }
             }
+            &_details{
+                //border:2px solid blue;
+                height: 30%;
+                display: flex;
+                column-gap: 10px;
+                padding-top: 10px;
+                :nth-child(1){
+                    img{
+                        object-fit: cover;
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                    }
+                }
+                :nth-child(2){
+                    display: flex;
+                    align-items: flex-start;
+                    height: 40px;
+                    font-size: 15px;
+                }
+            }
+
         }
         &_column{
             position: fixed;
@@ -125,6 +152,39 @@ $main-gold: rgb(255, 215, 0);
     }
 }
 
+@media (max-width: 1300px) { 
+    .homie{
+        &_topBanner{
+        }
+        &_fights{
+            padding-left: 2vw;
+            &_each{
+
+            }
+            &_column{
+                display: none;
+            }
+        }
+    }
+ }
+
+ @media (max-width: 1200px) { 
+    .homie{
+        &_topBanner{
+        }
+        &_fights{
+            //padding-left: 13vw; padding-right: 13vw;
+            grid-template-columns: 400px 400px;
+            padding-left: calc((50vh - 400px/2));
+            padding-right: calc((50vh - 400px/2));
+            justify-content: space-around;
+            &_each{
+            }
+            &_column{
+            }
+        }
+    }
+ }
 
 
 @media (max-width: 991.98px) { 
@@ -132,6 +192,7 @@ $main-gold: rgb(255, 215, 0);
         &_topBanner{
         }
         &_fights{
+            padding: 10px 4vw;
             grid-template-columns: 1fr 1fr;
             &_each{
 
@@ -169,7 +230,6 @@ $main-gold: rgb(255, 215, 0);
 @media (max-width: 575.98px) { 
     .homie{
         &_fights{
-            padding-left: 80px;
             &_each{
                 width: calc(90vw - 70px);
             }

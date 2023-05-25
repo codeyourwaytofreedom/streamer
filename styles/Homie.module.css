@@ -13,6 +13,7 @@
   width: 94vw;
   border-bottom: 1px solid rgb(238, 237, 237);
   overflow: hidden;
+  z-index: 9 !important;
 }
 .homie_topBanner .grid {
   display: grid;
@@ -95,21 +96,46 @@
   padding-top: 90px;
 }
 .homie_fights {
-  margin-top: 15px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 1vw;
   padding: 10px 2vw;
   padding-left: calc(80px + 4vw);
   justify-items: center;
   padding-right: 3vw;
+  gap: 20px;
 }
-.homie_fights_each img {
+.homie_fights_each {
+  aspect-ratio: 1/0.7;
+}
+.homie_fights_each_image {
+  height: 70%;
+}
+.homie_fights_each_image img {
   -o-object-fit: cover;
      object-fit: cover;
   width: 100%;
   height: 100%;
   border-radius: 15px;
+}
+.homie_fights_each_details {
+  height: 30%;
+  display: flex;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+  padding-top: 10px;
+}
+.homie_fights_each_details :nth-child(1) img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.homie_fights_each_details :nth-child(2) {
+  display: flex;
+  align-items: flex-start;
+  height: 40px;
+  font-size: 15px;
 }
 .homie_fights_column {
   position: fixed;
@@ -125,8 +151,25 @@
   font-weight: 300;
 }
 
+@media (max-width: 1300px) {
+  .homie_fights {
+    padding-left: 2vw;
+  }
+  .homie_fights_column {
+    display: none;
+  }
+}
+@media (max-width: 1200px) {
+  .homie_fights {
+    grid-template-columns: 400px 400px;
+    padding-left: calc(50vh - 200px);
+    padding-right: calc(50vh - 200px);
+    justify-content: space-around;
+  }
+}
 @media (max-width: 991.98px) {
   .homie_fights {
+    padding: 10px 4vw;
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -152,9 +195,6 @@
   }
 }
 @media (max-width: 575.98px) {
-  .homie_fights {
-    padding-left: 80px;
-  }
   .homie_fights_each {
     width: calc(90vw - 70px);
   }

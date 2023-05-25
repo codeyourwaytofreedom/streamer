@@ -6,17 +6,14 @@ import video from "../public/video.png";
 import puncher from "../public/puncher.svg";
 import Image from "next/image";
 import Fights_row from "./Fights";
-import right from "../public/right.png";
 import Slider_menu from "./Slider";
 
 const Homie = () => {
-  const weight_classes = ["Featherweight","Lightweight","Welterweight","Middleweight","Light heavyweight","Cruiserweight","Heavyweight","Champions", "Knock-outs","Legends","Title fights"]
   
   const forward = useRef<HTMLDivElement>(null);
   const anchor = useRef<HTMLDivElement>(null);
   const [traX, setX] = useState<number>(0);
   const [distance, setDistance] = useState<number>(0);
-  const[rightVis, setRightVis] = useState(true)
 
 
   useEffect(() => {

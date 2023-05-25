@@ -17,7 +17,9 @@ const Fights_row = () => {
         <div className={h.homie_fights}>
             {  images.length !== 0 && images.map((image,index) => (
               <div className={h.homie_fights_each} key={index}>
-                  <Link href={`/watch/${image.name.split(".")[0]}.mp4`}>
+
+                  <div className={h.homie_fights_each_image}>
+                    <Link href={`/watch/${image.name.split(".")[0]}.mp4`}>
                       <Image
                       src={`data:image/jpeg;base64,${image.data}`}
                       alt={image.name}
@@ -25,6 +27,18 @@ const Fights_row = () => {
                       height={300}
                       />
                   </Link>
+                  </div>
+                  <div className={h.homie_fights_each_details}>
+                    <div>
+                        <Image
+                          src={`data:image/jpeg;base64,${image.data}`}
+                          alt={image.name}
+                          width={400}
+                          height={300}
+                          />
+                    </div>
+                    <div>{image.name.split(".")[0].toUpperCase()} fight highlights... <br />MyTube brings you the best fights out there!</div>
+                  </div>
               </div>
             ))}
           <div className={h.homie_fights_column}>
