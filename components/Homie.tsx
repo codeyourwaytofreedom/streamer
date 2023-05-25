@@ -9,86 +9,6 @@ import Fights_row from "./Fights";
 import Slider_menu from "./Slider";
 
 const Homie = () => {
-  
-  const forward = useRef<HTMLDivElement>(null);
-  const anchor = useRef<HTMLDivElement>(null);
-  const [traX, setX] = useState<number>(0);
-  const [distance, setDistance] = useState<number>(0);
-
-
-  useEffect(() => {
-    const handleResize = () => {
-      const currentWidth = window.innerWidth;
-
-      const widthChange = currentWidth - previousWidth;
-
-      if(currentWidth > previousWidth){
-        console.log(traX,"enlarging")
-        if(traX !== 0 && traX < 0){
-          setX(traX + widthChange)
-        }
-        else{
-          setX(0)
-        }
-      }
-      previousWidth = currentWidth;
-    }
-
-    let previousWidth = window.innerWidth;
-
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [traX]);
-
-
-  useEffect(()=>{
-    if(forward.current && anchor.current){
-      setDistance(forward.current.offsetLeft - anchor.current.offsetLeft)
-    }
-
-    const distance_handler = () =>{
-      if(forward.current && anchor.current){
-        setDistance(forward.current.offsetLeft - anchor.current.offsetLeft)
-      }
-    }
-    
-    window.addEventListener("resize", distance_handler)
-    return () => {
-      window.removeEventListener('resize', distance_handler);
-    };
-  },[traX])
-  
-  const handle_forward = () =>{
-    if(window.innerWidth < 800){
-      if(distance -  (traX-50) > 55){
-        setX(traX - (55-(distance-traX)))
-      }
-      else{
-        setX(traX-50);
-      }
-    }
-    else{
-      if(distance -  (traX-50) > 150){
-        setX(traX - (150-(distance-traX)))
-      }
-      else{
-        setX(traX-50)
-      }
-      
-    }
-      
-  }
-
-  const handle_backward = () =>{
-    if(traX + 50 > 0){
-      setX(0)
-    }
-    else{
-      setX(traX+50)
-    }
-}
 
   return ( 
   <div className={h.homie}>
@@ -101,10 +21,10 @@ const Homie = () => {
         </div>
         <div className={h.search}>
           <div className={h.search_kernel}>
-                Search bar
+                <input type={"text"} placeholder={"search for fights"} />
           </div>
         </div>
-        <div id={h.name} ref={forward}>
+        <div id={h.name}>
           <div id={h.double}>
             <div>My</div>
             <div><Image alt={"play"} src={video}/></div>

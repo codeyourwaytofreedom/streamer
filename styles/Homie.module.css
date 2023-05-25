@@ -6,7 +6,7 @@
   background-color: white;
   position: fixed;
   top: 0;
-  padding-top: 10px;
+  padding: 5px;
   display: flex;
   align-items: center;
   left: 2vw;
@@ -50,13 +50,33 @@
 }
 .homie_topBanner .search_kernel {
   border: 1px solid rgba(0, 0, 0, 0.25);
-  width: 100%;
+  width: 90%;
   max-width: 600px;
   height: 40px;
   border-radius: 30px;
   display: flex;
   align-items: center;
   padding-left: 30px;
+  padding-right: 30px;
+}
+.homie_topBanner .search_kernel input {
+  border: none;
+  height: 100%;
+  width: 100%;
+  font-weight: 300;
+  font-size: medium;
+}
+.homie_topBanner .search_kernel input:focus {
+  outline: none;
+}
+.homie_topBanner .search_kernel input::-moz-placeholder {
+  font-weight: 300;
+}
+.homie_topBanner .search_kernel input:-ms-input-placeholder {
+  font-weight: 300;
+}
+.homie_topBanner .search_kernel input::placeholder {
+  font-weight: 300;
 }
 .homie_topBanner #backshadow {
   position: absolute;
@@ -97,23 +117,6 @@
   height: 30px;
   position: relative;
   top: -5px;
-}
-.homie_videocontainer {
-  width: 100%;
-  height: 500px;
-  display: flex;
-  justify-content: center;
-  background-color: black;
-}
-.homie_videocontainer video {
-  width: 100%;
-  height: 100%;
-  max-width: 600px;
-  -o-object-fit: contain;
-     object-fit: contain;
-  position: relative;
-  background-color: black;
-  padding-top: 90px;
 }
 .homie_fights {
   display: grid;
@@ -199,11 +202,10 @@
 @media (max-width: 767.98px) {
   .homie_topBanner {
     height: 80px;
-    padding-top: 0;
   }
   .homie_topBanner #name {
     font-size: 50px;
-    top: 0;
+    top: 5px;
   }
   .homie_topBanner #name #double {
     font-size: 21px;
@@ -219,6 +221,9 @@
   }
 }
 @media (max-width: 575.98px) {
+  .homie_fights {
+    padding-top: 0;
+  }
   .homie_fights_each {
     width: 90vw;
     aspect-ratio: 1/0.8;

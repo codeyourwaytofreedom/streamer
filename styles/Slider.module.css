@@ -103,4 +103,10 @@
   background-color: white;
   z-index: -1 !important;
   box-shadow: -4px 0 28px 21px white;
+}
+
+@media (max-width: 575.98px) {
+  .slider {
+    top: 70px;
+  }
 }/*# sourceMappingURL=Slider.module.css.map */

@@ -1,9 +1,12 @@
 import h from "../../styles/Homie.module.css";
+import v from "../../styles/Video.module.css";
+
 import { useEffect, useRef, useState } from "react";
 import punch from "../../public/punch.svg";
 import puncher from "../../public/puncher.svg";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import video from "../../public/video.png";
 
 const Watch = () => {
   const router = useRouter();
@@ -60,19 +63,36 @@ const Watch = () => {
   }, [router.query]);
       
     return ( 
-    <div className={h.homie}>
-      <div className={h.homie_topBanner}>
-        <div className={h.grid}>
-          <div><Image alt={"punch"} src={punch}/></div>
-          <div> <Image alt={"puncher"} src={puncher}/></div>
-          <div><Image alt={"puncher"} src={puncher}/></div>
-          <div><Image alt={"punch"} src={punch}/></div>
+    <>
+        <div className={h.homie_topBanner}>
+          <div className={h.grid}>
+            <div><Image alt={"punch"} src={punch}/></div>
+            <div> <Image alt={"puncher"} src={puncher}/></div>
+            <div><Image alt={"puncher"} src={puncher}/></div>
+            <div><Image alt={"punch"} src={punch}/></div>
+          </div>
+          <div className={h.search}>
+            <div className={h.search_kernel}>
+                  <input type={"text"} placeholder={"search for fights"} />
+            </div>
+          </div>
+          <div id={h.name}>
+            <div id={h.double}>
+              <div>My</div>
+              <div><Image alt={"play"} src={video}/></div>
+            </div>
+              Tube
+          </div>
         </div>
-      </div>
-        <div className={h.homie_videocontainer}>
-            <video ref={videoRef} controls /> 
+
+        <div className={v.video_container}>
+              <video ref={videoRef} controls /> 
         </div>
-    </div>
+
+        <div className={v.more}>
+          More to see
+        </div>
+    </>
     )
 }
  
