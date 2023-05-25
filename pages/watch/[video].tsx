@@ -89,9 +89,13 @@ const Watch = () => {
               <video ref={videoRef} controls /> 
         </div>
 
-        <div className={v.more}>
-          More to see
-        </div>
+{/*         <div className={v.more}>
+          {
+            [...Array(10)].map((i,e)=>
+            <div className={v.more_each} key={e}></div>
+            )
+          }
+        </div> */}
     </>
     )
 }

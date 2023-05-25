@@ -94,7 +94,7 @@ const Slider_menu = () => {
       const margin = forward.current.getBoundingClientRect().left -  anchor.current!.getBoundingClientRect().left;
         console.log(margin);
         if(margin > 0){
-          setX(traX + (margin+40))
+          setX(traX + (margin+20))
         }
     }
   },[forVis])
