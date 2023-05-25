@@ -99,6 +99,11 @@ const Homie = () => {
           <div><Image alt={"puncher"} src={puncher}/></div>
           <div><Image alt={"punch"} src={punch}/></div>
         </div>
+        <div className={h.search}>
+          <div className={h.search_kernel}>
+                Search bar
+          </div>
+        </div>
         <div id={h.name} ref={forward}>
           <div id={h.double}>
             <div>My</div>

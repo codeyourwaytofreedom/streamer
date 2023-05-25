@@ -39,6 +39,25 @@
   -webkit-animation: oval_minus 4s infinite;
           animation: oval_minus 4s infinite;
 }
+.homie_topBanner .search {
+  height: 50px;
+  width: calc(100vw - 250px);
+  position: absolute;
+  left: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.homie_topBanner .search_kernel {
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 600px;
+  height: 40px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+}
 .homie_topBanner #backshadow {
   position: absolute;
   top: 0;
@@ -52,8 +71,8 @@
 .homie_topBanner #name {
   height: 60px;
   position: fixed;
-  right: 0;
-  padding-right: 4vw;
+  top: 10px;
+  right: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,6 +81,7 @@
   letter-spacing: -4px;
   font-weight: 300;
   color: crimson;
+  width: 120px;
 }
 .homie_topBanner #name #double {
   letter-spacing: 0;
@@ -168,6 +188,9 @@
   }
 }
 @media (max-width: 991.98px) {
+  .homie_topBanner .search_kernel {
+    max-width: 500px;
+  }
   .homie_fights {
     padding: 10px 4vw;
     grid-template-columns: 1fr 1fr;
@@ -180,6 +203,7 @@
   }
   .homie_topBanner #name {
     font-size: 50px;
+    top: 0;
   }
   .homie_topBanner #name #double {
     font-size: 21px;
@@ -196,7 +220,8 @@
 }
 @media (max-width: 575.98px) {
   .homie_fights_each {
-    width: calc(90vw - 70px);
+    width: 90vw;
+    aspect-ratio: 1/0.8;
   }
 }
 @-webkit-keyframes oval {
