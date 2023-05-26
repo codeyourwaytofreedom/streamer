@@ -40,8 +40,8 @@ const Watch = () => {
         const newChunkAdderId = setInterval(async () => {
             const start = bytesReceived < size ? bytesReceived : size;
             const end = bytesReceived + chunk_size - 1 < size ? bytesReceived + chunk_size - 1 : size;
-  
-            if (end === size || start === size) {
+            
+            if (end > size || start > size) {
               clearInterval(chunkAdderId);
               return;
             }
@@ -88,14 +88,6 @@ const Watch = () => {
         <div className={v.video_container}>
               <video ref={videoRef} controls /> 
         </div>
-
-{/*         <div className={v.more}>
-          {
-            [...Array(10)].map((i,e)=>
-            <div className={v.more_each} key={e}></div>
-            )
-          }
-        </div> */}
     </>
     )
 }

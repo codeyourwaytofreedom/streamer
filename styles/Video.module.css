@@ -14,22 +14,4 @@
   -o-object-fit: cover;
      object-fit: cover;
   position: relative;
-}
-
-.more {
-  position: relative;
-  top: 100px;
-  margin-top: 20px;
-  display: flex;
-  width: 96vw;
-  left: 2vw;
-  overflow-x: scroll;
-}
-.more_each {
-  min-width: 200px;
-  aspect-ratio: 10/8;
-  background-image: url("/film.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
 }/*# sourceMappingURL=Video.module.css.map */
